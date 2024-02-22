@@ -1,0 +1,149 @@
+name: weather_app
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 0.0.1+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # CORE
+  dart_kit:
+    path: packages/dart_kit
+
+  rx_viewmodels:
+    path: packages/rx_viewmodels
+
+  # DI
+  get_it: 7.6.4
+  injectable: 2.3.2
+
+  # NATIVE HELPERS
+  path_provider: 2.1.1
+  flutter_native_splash: 2.3.5
+  flutter_secure_storage: 9.0.0
+  package_info_plus: 4.2.0
+  device_info_plus: 9.1.0
+  android_id: 0.3.6
+  url_launcher: 6.2.1
+
+
+  # NETWORKING
+  dio: 5.3.3
+  dio_smart_retry: 6.0.0
+  pretty_dio_logger: 1.3.1
+  connectivity_plus: 5.0.1
+
+  # DATA
+  get: 4.6.6
+  rxdart: 0.27.7
+  stock: 1.1.0
+  hive: 2.2.3
+  uuid: 4.1.0
+  equatable: 2.0.5
+  collection: 1.17.2
+  intl: 0.18.1
+  json_annotation: 4.8.1
+  freezed_annotation: 2.4.1
+  version: 3.0.2
+
+  # FIREBASE
+  firebase_core: 2.21.0
+  firebase_crashlytics: 3.4.3
+  firebase_analytics: 10.6.3
+
+
+  # UI
+  auto_route: 7.8.4
+  flutter_screenutil: 5.9.0
+  flutter_svg: 2.0.9
+  cupertino_icons: 1.0.6
+  flutter_spinkit: 5.2.0
+  google_fonts: 6.1.0
+  timeago: 3.6.0
+  separated_column: 2.0.0
+  separated_row: 2.0.0
+  modal_bottom_sheet: 3.0.0-pre
+  infinite_scroll_pagination: 4.0.0
+  flutter_staggered_animations: 1.1.1
+  cached_network_image: 3.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  freezed: 2.4.5
+  build_runner: 2.4.6
+  intl_utils: 2.8.5
+  http_mock_adapter: 0.6.0
+  faker_dart: 0.2.1
+
+  # generator libs
+  injectable_generator: 2.4.1
+  auto_route_generator: 7.3.2
+  flutter_launcher_icons: 0.13.1
+  flutter_gen_runner: 5.3.2
+  mockito: 5.4.2
+  json_serializable: 6.7.1
+
+
+flutter:
+  generate: false
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/images/
+
+# creates a binding between your translations from .arb files and your Flutter app.
+# It generates boilerplate code for official Dart Intl library and adds auto-complete for keys in Dart code.
+# Run command: flutter pub run intl_utils:generate
+flutter_intl:
+  enabled: true
+  class_name: AppLocalizations
+  arb_dir: lib/l10n
+  output_dir: lib/base/utils/localizations_generated
+  template-arb-file: intl_en.arb
+
+# updating app launcher icon
+# Run command: flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  android: true
+  ios: true
+  image_path: 'images/ic_launcher.png'
+  image_path_ios: 'images/ic_launcher_ios.png' # Transparency not supported on IOS
+  adaptive_icon_foreground: 'images/ic_launcher_foreground.png'
+  adaptive_icon_background: '#1b1b26'
+  remove_alpha_ios: true
+  web:
+    generate: false
+  windows:
+    generate: false
+
+# automatically generates iOS and Android native code for customizing this native splash screen, background color, and splash image.
+# Run command: flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  color: '#e1f5fe'
+  # color_dark: '#e1f5fe'
+  # background_image: "images/splash_background.png"
+  # background_image_dark: "images/splash_background_dart.png"
+
+  # image parameter must be a png file and should be sized for 4x pixel density
+  image: 'images/splash_logo.png' # logo_lockup_flutter_vertical
+  # image_dark: 'images/splash_logo_dark.png' # logo_lockup_flutter_vertical
+
+  # It must be a png file.
+  branding: 'images/splash_branding.png'
+  # branding_dark: 'icons/splash_branding_dark.png'
+  # branding_mode: bottom
+
+  android_12:
+    color: "#42a5f5"
+    image: 'images/splash_logo_android_12.png'
+    icon_background_color: "#eeeeee"
+    branding: 'images/splash_branding.png'

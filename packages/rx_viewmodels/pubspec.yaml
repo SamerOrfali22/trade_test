@@ -1,0 +1,31 @@
+name: rx_viewmodels
+description: A new Flutter project.
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 0.0.1+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # CORE
+  dart_kit:
+    path: ../dart_kit
+
+  get: 4.6.6
+  rxdart: 0.27.7
+  get_it: 7.6.4
+  uuid: 4.1.0
+  equatable: 2.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: 5.4.2
+
+flutter:
+  uses-material-design: true
