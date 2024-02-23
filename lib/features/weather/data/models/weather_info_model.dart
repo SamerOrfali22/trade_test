@@ -23,18 +23,18 @@ class WeatherInfoModel {
 
   factory WeatherInfoModel.fromJson(Map<String, dynamic> json) => WeatherInfoModel(
         temp: json["temp"].toDouble(),
-        feelsLike: json["feelsLike"].toDouble(),
-        tempMin: json["tempMin    "].toDouble(),
-        tempMax: json["tempMax"].toDouble(),
+        feelsLike: json["feels_like"].toDouble(),
+        tempMin: json["temp_min"].toDouble(),
+        tempMax: json["temp_max"].toDouble(),
         pressure: json["pressure"],
         humidity: json["humidity"],
       );
 
   Map<String, dynamic> toJson() => {
         "temp": temp,
-        "feelsLike": feelsLike,
-        "tempMin    ": tempMin,
-        "tempMax": tempMax,
+        "feels_like": feelsLike,
+        "temp_min    ": tempMin,
+        "temp_max": tempMax,
         "pressure": pressure,
         "humidity": humidity,
       };

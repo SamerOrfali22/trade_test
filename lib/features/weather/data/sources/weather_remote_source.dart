@@ -8,7 +8,7 @@ import 'package:weather_app/features/weather/data/models/weather_response_model.
 abstract class WeatherRemoteSource {
   Future<Result<WeatherResponseModel>> fetchWeatherByCoord({
     required String lat,
-    required String long,
+    required String lon,
   });
 }
 
@@ -17,10 +17,14 @@ class WeatherRemoteSourceImpl extends BaseRemoteSource implements WeatherRemoteS
   WeatherRemoteSourceImpl(super.client);
 
   @override
-  Future<Result<WeatherResponseModel>> fetchWeatherByCoord({required String lat, required String long}) {
+  Future<Result<WeatherResponseModel>> fetchWeatherByCoord({required String lat, required String lon}) {
     return request(
       method: HttpMethod.GET,
       endpoint: EndPoints.weather,
+      queryParameters: {
+        'lat': lat,
+        'lon': lon,
+      },
       serializer: (json) => WeatherResponseModel.fromJson(json),
     );
   }
