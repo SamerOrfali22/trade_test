@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 class WindModel {
-  final double speed;
-  final int deg;
+  final double? speed;
+  final int? deg;
 
   WindModel({
     required this.speed,
@@ -14,8 +14,8 @@ class WindModel {
   String toRawJson() => json.encode(toJson());
 
   factory WindModel.fromJson(Map<String, dynamic> json) => WindModel(
-        speed: json["speed"].toDouble(),
-        deg: json["deg"],
+        speed: json["speed"] == null ? null : json["speed"].toDouble(),
+        deg: json["deg"] == null ? null : json["deg"],
       );
 
   Map<String, dynamic> toJson() => {

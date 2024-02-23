@@ -20,15 +20,16 @@ ForecastResponseModel _$ForecastResponseModelFromJson(Map<String, dynamic> json)
 
 /// @nodoc
 mixin _$ForecastResponseModel {
-  String get cod => throw _privateConstructorUsedError;
+  String? get cod => throw _privateConstructorUsedError;
 
-  int get message => throw _privateConstructorUsedError;
+  int? get message => throw _privateConstructorUsedError;
 
-  int get cnt => throw _privateConstructorUsedError;
+  int? get cnt => throw _privateConstructorUsedError;
 
-  List<ForecastModel> get list => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: [])
+  List<ForecastModel>? get list => throw _privateConstructorUsedError;
 
-  CityModel get city => throw _privateConstructorUsedError;
+  CityModel? get city => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -42,7 +43,8 @@ abstract class $ForecastResponseModelCopyWith<$Res> {
       _$ForecastResponseModelCopyWithImpl<$Res, ForecastResponseModel>;
 
   @useResult
-  $Res call({String cod, int message, int cnt, List<ForecastModel> list, CityModel city});
+  $Res call(
+      {String? cod, int? message, int? cnt, @JsonKey(defaultValue: []) List<ForecastModel>? list, CityModel? city});
 }
 
 /// @nodoc
@@ -59,33 +61,33 @@ class _$ForecastResponseModelCopyWithImpl<$Res, $Val extends ForecastResponseMod
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cod = null,
-    Object? message = null,
-    Object? cnt = null,
-    Object? list = null,
-    Object? city = null,
+    Object? cod = freezed,
+    Object? message = freezed,
+    Object? cnt = freezed,
+    Object? list = freezed,
+    Object? city = freezed,
   }) {
     return _then(_value.copyWith(
-      cod: null == cod
+      cod: freezed == cod
           ? _value.cod
           : cod // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
+              as String?,
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as int,
-      cnt: null == cnt
+              as int?,
+      cnt: freezed == cnt
           ? _value.cnt
           : cnt // ignore: cast_nullable_to_non_nullable
-              as int,
-      list: null == list
+              as int?,
+      list: freezed == list
           ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
-              as List<ForecastModel>,
-      city: null == city
+              as List<ForecastModel>?,
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as CityModel,
+              as CityModel?,
     ) as $Val);
   }
 }
@@ -98,7 +100,8 @@ abstract class _$$ForecastResponseModelImplCopyWith<$Res> implements $ForecastRe
 
   @override
   @useResult
-  $Res call({String cod, int message, int cnt, List<ForecastModel> list, CityModel city});
+  $Res call(
+      {String? cod, int? message, int? cnt, @JsonKey(defaultValue: []) List<ForecastModel>? list, CityModel? city});
 }
 
 /// @nodoc
@@ -112,33 +115,33 @@ class __$$ForecastResponseModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cod = null,
-    Object? message = null,
-    Object? cnt = null,
-    Object? list = null,
-    Object? city = null,
+    Object? cod = freezed,
+    Object? message = freezed,
+    Object? cnt = freezed,
+    Object? list = freezed,
+    Object? city = freezed,
   }) {
     return _then(_$ForecastResponseModelImpl(
-      cod: null == cod
+      cod: freezed == cod
           ? _value.cod
           : cod // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
+              as String?,
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as int,
-      cnt: null == cnt
+              as int?,
+      cnt: freezed == cnt
           ? _value.cnt
           : cnt // ignore: cast_nullable_to_non_nullable
-              as int,
-      list: null == list
+              as int?,
+      list: freezed == list
           ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
-              as List<ForecastModel>,
-      city: null == city
+              as List<ForecastModel>?,
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as CityModel,
+              as CityModel?,
     ));
   }
 }
@@ -147,32 +150,31 @@ class __$$ForecastResponseModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ForecastResponseModelImpl implements _ForecastResponseModel {
   const _$ForecastResponseModelImpl(
-      {required this.cod,
-      required this.message,
-      required this.cnt,
-      required final List<ForecastModel> list,
-      required this.city})
+      {this.cod, this.message, this.cnt, @JsonKey(defaultValue: []) final List<ForecastModel>? list, this.city})
       : _list = list;
 
   factory _$ForecastResponseModelImpl.fromJson(Map<String, dynamic> json) => _$$ForecastResponseModelImplFromJson(json);
 
   @override
-  final String cod;
+  final String? cod;
   @override
-  final int message;
+  final int? message;
   @override
-  final int cnt;
-  final List<ForecastModel> _list;
+  final int? cnt;
+  final List<ForecastModel>? _list;
 
   @override
-  List<ForecastModel> get list {
+  @JsonKey(defaultValue: [])
+  List<ForecastModel>? get list {
+    final value = _list;
+    if (value == null) return null;
     if (_list is EqualUnmodifiableListView) return _list;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_list);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final CityModel city;
+  final CityModel? city;
 
   @override
   String toString() {
@@ -211,28 +213,29 @@ class _$ForecastResponseModelImpl implements _ForecastResponseModel {
 
 abstract class _ForecastResponseModel implements ForecastResponseModel {
   const factory _ForecastResponseModel(
-      {required final String cod,
-      required final int message,
-      required final int cnt,
-      required final List<ForecastModel> list,
-      required final CityModel city}) = _$ForecastResponseModelImpl;
+      {final String? cod,
+      final int? message,
+      final int? cnt,
+      @JsonKey(defaultValue: []) final List<ForecastModel>? list,
+      final CityModel? city}) = _$ForecastResponseModelImpl;
 
   factory _ForecastResponseModel.fromJson(Map<String, dynamic> json) = _$ForecastResponseModelImpl.fromJson;
 
   @override
-  String get cod;
+  String? get cod;
 
   @override
-  int get message;
+  int? get message;
 
   @override
-  int get cnt;
+  int? get cnt;
 
   @override
-  List<ForecastModel> get list;
+  @JsonKey(defaultValue: [])
+  List<ForecastModel>? get list;
 
   @override
-  CityModel get city;
+  CityModel? get city;
 
   @override
   @JsonKey(ignore: true)

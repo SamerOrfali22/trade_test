@@ -23,7 +23,7 @@ class ForecastRemoteSourceImpl extends BaseRemoteSource implements ForecastRemot
   }) {
     return request(
       method: HttpMethod.GET,
-      endpoint: EndPoints.weather,
+      endpoint: EndPoints.forecast,
       queryParameters: {
         'lat': lat,
         'lon': lon,

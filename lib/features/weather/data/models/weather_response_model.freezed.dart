@@ -20,31 +20,32 @@ WeatherResponseModel _$WeatherResponseModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WeatherResponseModel {
-  CoordModel get coord => throw _privateConstructorUsedError;
+  CoordModel? get coord => throw _privateConstructorUsedError;
 
-  List<WeatherConditionModel> get weather => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: [])
+  List<WeatherConditionModel>? get weather => throw _privateConstructorUsedError;
 
-  String get base => throw _privateConstructorUsedError;
+  String? get base => throw _privateConstructorUsedError;
 
-  WeatherInfoModel get main => throw _privateConstructorUsedError;
+  WeatherInfoModel? get main => throw _privateConstructorUsedError;
 
-  int get visibility => throw _privateConstructorUsedError;
+  int? get visibility => throw _privateConstructorUsedError;
 
-  WindModel get wind => throw _privateConstructorUsedError;
+  WindModel? get wind => throw _privateConstructorUsedError;
 
-  CloudsModel get clouds => throw _privateConstructorUsedError;
+  CloudsModel? get clouds => throw _privateConstructorUsedError;
 
-  int get dt => throw _privateConstructorUsedError;
+  int? get dt => throw _privateConstructorUsedError;
 
-  SunInfoModel get sys => throw _privateConstructorUsedError;
+  SunInfoModel? get sys => throw _privateConstructorUsedError;
 
-  int get timezone => throw _privateConstructorUsedError;
+  int? get timezone => throw _privateConstructorUsedError;
 
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
 
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
 
-  int get cod => throw _privateConstructorUsedError;
+  int? get cod => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -59,19 +60,19 @@ abstract class $WeatherResponseModelCopyWith<$Res> {
 
   @useResult
   $Res call(
-      {CoordModel coord,
-      List<WeatherConditionModel> weather,
-      String base,
-      WeatherInfoModel main,
-      int visibility,
-      WindModel wind,
-      CloudsModel clouds,
-      int dt,
-      SunInfoModel sys,
-      int timezone,
-      int id,
-      String name,
-      int cod});
+      {CoordModel? coord,
+      @JsonKey(defaultValue: []) List<WeatherConditionModel>? weather,
+      String? base,
+      WeatherInfoModel? main,
+      int? visibility,
+      WindModel? wind,
+      CloudsModel? clouds,
+      int? dt,
+      SunInfoModel? sys,
+      int? timezone,
+      int? id,
+      String? name,
+      int? cod});
 }
 
 /// @nodoc
@@ -88,73 +89,73 @@ class _$WeatherResponseModelCopyWithImpl<$Res, $Val extends WeatherResponseModel
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? coord = null,
-    Object? weather = null,
-    Object? base = null,
-    Object? main = null,
-    Object? visibility = null,
-    Object? wind = null,
-    Object? clouds = null,
-    Object? dt = null,
-    Object? sys = null,
-    Object? timezone = null,
-    Object? id = null,
-    Object? name = null,
-    Object? cod = null,
+    Object? coord = freezed,
+    Object? weather = freezed,
+    Object? base = freezed,
+    Object? main = freezed,
+    Object? visibility = freezed,
+    Object? wind = freezed,
+    Object? clouds = freezed,
+    Object? dt = freezed,
+    Object? sys = freezed,
+    Object? timezone = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? cod = freezed,
   }) {
     return _then(_value.copyWith(
-      coord: null == coord
+      coord: freezed == coord
           ? _value.coord
           : coord // ignore: cast_nullable_to_non_nullable
-              as CoordModel,
-      weather: null == weather
+              as CoordModel?,
+      weather: freezed == weather
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as List<WeatherConditionModel>,
-      base: null == base
+              as List<WeatherConditionModel>?,
+      base: freezed == base
           ? _value.base
           : base // ignore: cast_nullable_to_non_nullable
-              as String,
-      main: null == main
+              as String?,
+      main: freezed == main
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
-              as WeatherInfoModel,
-      visibility: null == visibility
+              as WeatherInfoModel?,
+      visibility: freezed == visibility
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
-              as int,
-      wind: null == wind
+              as int?,
+      wind: freezed == wind
           ? _value.wind
           : wind // ignore: cast_nullable_to_non_nullable
-              as WindModel,
-      clouds: null == clouds
+              as WindModel?,
+      clouds: freezed == clouds
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
-              as CloudsModel,
-      dt: null == dt
+              as CloudsModel?,
+      dt: freezed == dt
           ? _value.dt
           : dt // ignore: cast_nullable_to_non_nullable
-              as int,
-      sys: null == sys
+              as int?,
+      sys: freezed == sys
           ? _value.sys
           : sys // ignore: cast_nullable_to_non_nullable
-              as SunInfoModel,
-      timezone: null == timezone
+              as SunInfoModel?,
+      timezone: freezed == timezone
           ? _value.timezone
           : timezone // ignore: cast_nullable_to_non_nullable
-              as int,
-      id: null == id
+              as int?,
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
+              as int?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      cod: null == cod
+              as String?,
+      cod: freezed == cod
           ? _value.cod
           : cod // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -168,19 +169,19 @@ abstract class _$$WeatherResponseModelImplCopyWith<$Res> implements $WeatherResp
   @override
   @useResult
   $Res call(
-      {CoordModel coord,
-      List<WeatherConditionModel> weather,
-      String base,
-      WeatherInfoModel main,
-      int visibility,
-      WindModel wind,
-      CloudsModel clouds,
-      int dt,
-      SunInfoModel sys,
-      int timezone,
-      int id,
-      String name,
-      int cod});
+      {CoordModel? coord,
+      @JsonKey(defaultValue: []) List<WeatherConditionModel>? weather,
+      String? base,
+      WeatherInfoModel? main,
+      int? visibility,
+      WindModel? wind,
+      CloudsModel? clouds,
+      int? dt,
+      SunInfoModel? sys,
+      int? timezone,
+      int? id,
+      String? name,
+      int? cod});
 }
 
 /// @nodoc
@@ -194,73 +195,73 @@ class __$$WeatherResponseModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? coord = null,
-    Object? weather = null,
-    Object? base = null,
-    Object? main = null,
-    Object? visibility = null,
-    Object? wind = null,
-    Object? clouds = null,
-    Object? dt = null,
-    Object? sys = null,
-    Object? timezone = null,
-    Object? id = null,
-    Object? name = null,
-    Object? cod = null,
+    Object? coord = freezed,
+    Object? weather = freezed,
+    Object? base = freezed,
+    Object? main = freezed,
+    Object? visibility = freezed,
+    Object? wind = freezed,
+    Object? clouds = freezed,
+    Object? dt = freezed,
+    Object? sys = freezed,
+    Object? timezone = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? cod = freezed,
   }) {
     return _then(_$WeatherResponseModelImpl(
-      coord: null == coord
+      coord: freezed == coord
           ? _value.coord
           : coord // ignore: cast_nullable_to_non_nullable
-              as CoordModel,
-      weather: null == weather
+              as CoordModel?,
+      weather: freezed == weather
           ? _value._weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as List<WeatherConditionModel>,
-      base: null == base
+              as List<WeatherConditionModel>?,
+      base: freezed == base
           ? _value.base
           : base // ignore: cast_nullable_to_non_nullable
-              as String,
-      main: null == main
+              as String?,
+      main: freezed == main
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
-              as WeatherInfoModel,
-      visibility: null == visibility
+              as WeatherInfoModel?,
+      visibility: freezed == visibility
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
-              as int,
-      wind: null == wind
+              as int?,
+      wind: freezed == wind
           ? _value.wind
           : wind // ignore: cast_nullable_to_non_nullable
-              as WindModel,
-      clouds: null == clouds
+              as WindModel?,
+      clouds: freezed == clouds
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
-              as CloudsModel,
-      dt: null == dt
+              as CloudsModel?,
+      dt: freezed == dt
           ? _value.dt
           : dt // ignore: cast_nullable_to_non_nullable
-              as int,
-      sys: null == sys
+              as int?,
+      sys: freezed == sys
           ? _value.sys
           : sys // ignore: cast_nullable_to_non_nullable
-              as SunInfoModel,
-      timezone: null == timezone
+              as SunInfoModel?,
+      timezone: freezed == timezone
           ? _value.timezone
           : timezone // ignore: cast_nullable_to_non_nullable
-              as int,
-      id: null == id
+              as int?,
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
+              as int?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      cod: null == cod
+              as String?,
+      cod: freezed == cod
           ? _value.cod
           : cod // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -269,56 +270,59 @@ class __$$WeatherResponseModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WeatherResponseModelImpl implements _WeatherResponseModel {
   const _$WeatherResponseModelImpl(
-      {required this.coord,
-      required final List<WeatherConditionModel> weather,
-      required this.base,
-      required this.main,
-      required this.visibility,
-      required this.wind,
-      required this.clouds,
-      required this.dt,
-      required this.sys,
-      required this.timezone,
-      required this.id,
-      required this.name,
-      required this.cod})
+      {this.coord,
+      @JsonKey(defaultValue: []) final List<WeatherConditionModel>? weather,
+      this.base,
+      this.main,
+      this.visibility,
+      this.wind,
+      this.clouds,
+      this.dt,
+      this.sys,
+      this.timezone,
+      this.id,
+      this.name,
+      this.cod})
       : _weather = weather;
 
   factory _$WeatherResponseModelImpl.fromJson(Map<String, dynamic> json) => _$$WeatherResponseModelImplFromJson(json);
 
   @override
-  final CoordModel coord;
-  final List<WeatherConditionModel> _weather;
+  final CoordModel? coord;
+  final List<WeatherConditionModel>? _weather;
 
   @override
-  List<WeatherConditionModel> get weather {
+  @JsonKey(defaultValue: [])
+  List<WeatherConditionModel>? get weather {
+    final value = _weather;
+    if (value == null) return null;
     if (_weather is EqualUnmodifiableListView) return _weather;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_weather);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String base;
+  final String? base;
   @override
-  final WeatherInfoModel main;
+  final WeatherInfoModel? main;
   @override
-  final int visibility;
+  final int? visibility;
   @override
-  final WindModel wind;
+  final WindModel? wind;
   @override
-  final CloudsModel clouds;
+  final CloudsModel? clouds;
   @override
-  final int dt;
+  final int? dt;
   @override
-  final SunInfoModel sys;
+  final SunInfoModel? sys;
   @override
-  final int timezone;
+  final int? timezone;
   @override
-  final int id;
+  final int? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final int cod;
+  final int? cod;
 
   @override
   String toString() {
@@ -366,60 +370,61 @@ class _$WeatherResponseModelImpl implements _WeatherResponseModel {
 
 abstract class _WeatherResponseModel implements WeatherResponseModel {
   const factory _WeatherResponseModel(
-      {required final CoordModel coord,
-      required final List<WeatherConditionModel> weather,
-      required final String base,
-      required final WeatherInfoModel main,
-      required final int visibility,
-      required final WindModel wind,
-      required final CloudsModel clouds,
-      required final int dt,
-      required final SunInfoModel sys,
-      required final int timezone,
-      required final int id,
-      required final String name,
-      required final int cod}) = _$WeatherResponseModelImpl;
+      {final CoordModel? coord,
+      @JsonKey(defaultValue: []) final List<WeatherConditionModel>? weather,
+      final String? base,
+      final WeatherInfoModel? main,
+      final int? visibility,
+      final WindModel? wind,
+      final CloudsModel? clouds,
+      final int? dt,
+      final SunInfoModel? sys,
+      final int? timezone,
+      final int? id,
+      final String? name,
+      final int? cod}) = _$WeatherResponseModelImpl;
 
   factory _WeatherResponseModel.fromJson(Map<String, dynamic> json) = _$WeatherResponseModelImpl.fromJson;
 
   @override
-  CoordModel get coord;
+  CoordModel? get coord;
 
   @override
-  List<WeatherConditionModel> get weather;
+  @JsonKey(defaultValue: [])
+  List<WeatherConditionModel>? get weather;
 
   @override
-  String get base;
+  String? get base;
 
   @override
-  WeatherInfoModel get main;
+  WeatherInfoModel? get main;
 
   @override
-  int get visibility;
+  int? get visibility;
 
   @override
-  WindModel get wind;
+  WindModel? get wind;
 
   @override
-  CloudsModel get clouds;
+  CloudsModel? get clouds;
 
   @override
-  int get dt;
+  int? get dt;
 
   @override
-  SunInfoModel get sys;
+  SunInfoModel? get sys;
 
   @override
-  int get timezone;
+  int? get timezone;
 
   @override
-  int get id;
+  int? get id;
 
   @override
-  String get name;
+  String? get name;
 
   @override
-  int get cod;
+  int? get cod;
 
   @override
   @JsonKey(ignore: true)

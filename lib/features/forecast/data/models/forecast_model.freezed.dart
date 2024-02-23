@@ -20,21 +20,22 @@ ForecastModel _$ForecastModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ForecastModel {
-  int get dt => throw _privateConstructorUsedError;
+  int? get dt => throw _privateConstructorUsedError;
 
-  WeatherInfoModel get main => throw _privateConstructorUsedError;
+  WeatherInfoModel? get main => throw _privateConstructorUsedError;
 
-  List<WeatherInfoModel> get weather => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: [])
+  List<WeatherInfoModel>? get weather => throw _privateConstructorUsedError;
 
-  CloudsModel get clouds => throw _privateConstructorUsedError;
+  CloudsModel? get clouds => throw _privateConstructorUsedError;
 
-  WindModel get wind => throw _privateConstructorUsedError;
+  WindModel? get wind => throw _privateConstructorUsedError;
 
-  int get visibility => throw _privateConstructorUsedError;
+  int? get visibility => throw _privateConstructorUsedError;
 
-  double get pop => throw _privateConstructorUsedError;
+  double? get pop => throw _privateConstructorUsedError;
 
-  DateTime get dtTxt => throw _privateConstructorUsedError;
+  DateTime? get dtTxt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -49,14 +50,14 @@ abstract class $ForecastModelCopyWith<$Res> {
 
   @useResult
   $Res call(
-      {int dt,
-      WeatherInfoModel main,
-      List<WeatherInfoModel> weather,
-      CloudsModel clouds,
-      WindModel wind,
-      int visibility,
-      double pop,
-      DateTime dtTxt});
+      {int? dt,
+      WeatherInfoModel? main,
+      @JsonKey(defaultValue: []) List<WeatherInfoModel>? weather,
+      CloudsModel? clouds,
+      WindModel? wind,
+      int? visibility,
+      double? pop,
+      DateTime? dtTxt});
 }
 
 /// @nodoc
@@ -72,48 +73,48 @@ class _$ForecastModelCopyWithImpl<$Res, $Val extends ForecastModel> implements $
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dt = null,
-    Object? main = null,
-    Object? weather = null,
-    Object? clouds = null,
-    Object? wind = null,
-    Object? visibility = null,
-    Object? pop = null,
-    Object? dtTxt = null,
+    Object? dt = freezed,
+    Object? main = freezed,
+    Object? weather = freezed,
+    Object? clouds = freezed,
+    Object? wind = freezed,
+    Object? visibility = freezed,
+    Object? pop = freezed,
+    Object? dtTxt = freezed,
   }) {
     return _then(_value.copyWith(
-      dt: null == dt
+      dt: freezed == dt
           ? _value.dt
           : dt // ignore: cast_nullable_to_non_nullable
-              as int,
-      main: null == main
+              as int?,
+      main: freezed == main
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
-              as WeatherInfoModel,
-      weather: null == weather
+              as WeatherInfoModel?,
+      weather: freezed == weather
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as List<WeatherInfoModel>,
-      clouds: null == clouds
+              as List<WeatherInfoModel>?,
+      clouds: freezed == clouds
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
-              as CloudsModel,
-      wind: null == wind
+              as CloudsModel?,
+      wind: freezed == wind
           ? _value.wind
           : wind // ignore: cast_nullable_to_non_nullable
-              as WindModel,
-      visibility: null == visibility
+              as WindModel?,
+      visibility: freezed == visibility
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
-              as int,
-      pop: null == pop
+              as int?,
+      pop: freezed == pop
           ? _value.pop
           : pop // ignore: cast_nullable_to_non_nullable
-              as double,
-      dtTxt: null == dtTxt
+              as double?,
+      dtTxt: freezed == dtTxt
           ? _value.dtTxt
           : dtTxt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -126,14 +127,14 @@ abstract class _$$ForcastModelImplCopyWith<$Res> implements $ForecastModelCopyWi
   @override
   @useResult
   $Res call(
-      {int dt,
-      WeatherInfoModel main,
-      List<WeatherInfoModel> weather,
-      CloudsModel clouds,
-      WindModel wind,
-      int visibility,
-      double pop,
-      DateTime dtTxt});
+      {int? dt,
+      WeatherInfoModel? main,
+      @JsonKey(defaultValue: []) List<WeatherInfoModel>? weather,
+      CloudsModel? clouds,
+      WindModel? wind,
+      int? visibility,
+      double? pop,
+      DateTime? dtTxt});
 }
 
 /// @nodoc
@@ -145,48 +146,48 @@ class __$$ForcastModelImplCopyWithImpl<$Res> extends _$ForecastModelCopyWithImpl
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dt = null,
-    Object? main = null,
-    Object? weather = null,
-    Object? clouds = null,
-    Object? wind = null,
-    Object? visibility = null,
-    Object? pop = null,
-    Object? dtTxt = null,
+    Object? dt = freezed,
+    Object? main = freezed,
+    Object? weather = freezed,
+    Object? clouds = freezed,
+    Object? wind = freezed,
+    Object? visibility = freezed,
+    Object? pop = freezed,
+    Object? dtTxt = freezed,
   }) {
     return _then(_$ForcastModelImpl(
-      dt: null == dt
+      dt: freezed == dt
           ? _value.dt
           : dt // ignore: cast_nullable_to_non_nullable
-              as int,
-      main: null == main
+              as int?,
+      main: freezed == main
           ? _value.main
           : main // ignore: cast_nullable_to_non_nullable
-              as WeatherInfoModel,
-      weather: null == weather
+              as WeatherInfoModel?,
+      weather: freezed == weather
           ? _value._weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as List<WeatherInfoModel>,
-      clouds: null == clouds
+              as List<WeatherInfoModel>?,
+      clouds: freezed == clouds
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
-              as CloudsModel,
-      wind: null == wind
+              as CloudsModel?,
+      wind: freezed == wind
           ? _value.wind
           : wind // ignore: cast_nullable_to_non_nullable
-              as WindModel,
-      visibility: null == visibility
+              as WindModel?,
+      visibility: freezed == visibility
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
-              as int,
-      pop: null == pop
+              as int?,
+      pop: freezed == pop
           ? _value.pop
           : pop // ignore: cast_nullable_to_non_nullable
-              as double,
-      dtTxt: null == dtTxt
+              as double?,
+      dtTxt: freezed == dtTxt
           ? _value.dtTxt
           : dtTxt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -195,41 +196,44 @@ class __$$ForcastModelImplCopyWithImpl<$Res> extends _$ForecastModelCopyWithImpl
 @JsonSerializable()
 class _$ForcastModelImpl implements _ForcastModel {
   const _$ForcastModelImpl(
-      {required this.dt,
-      required this.main,
-      required final List<WeatherInfoModel> weather,
-      required this.clouds,
-      required this.wind,
-      required this.visibility,
-      required this.pop,
-      required this.dtTxt})
+      {this.dt,
+      this.main,
+      @JsonKey(defaultValue: []) final List<WeatherInfoModel>? weather,
+      this.clouds,
+      this.wind,
+      this.visibility,
+      this.pop,
+      this.dtTxt})
       : _weather = weather;
 
   factory _$ForcastModelImpl.fromJson(Map<String, dynamic> json) => _$$ForcastModelImplFromJson(json);
 
   @override
-  final int dt;
+  final int? dt;
   @override
-  final WeatherInfoModel main;
-  final List<WeatherInfoModel> _weather;
+  final WeatherInfoModel? main;
+  final List<WeatherInfoModel>? _weather;
 
   @override
-  List<WeatherInfoModel> get weather {
+  @JsonKey(defaultValue: [])
+  List<WeatherInfoModel>? get weather {
+    final value = _weather;
+    if (value == null) return null;
     if (_weather is EqualUnmodifiableListView) return _weather;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_weather);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final CloudsModel clouds;
+  final CloudsModel? clouds;
   @override
-  final WindModel wind;
+  final WindModel? wind;
   @override
-  final int visibility;
+  final int? visibility;
   @override
-  final double pop;
+  final double? pop;
   @override
-  final DateTime dtTxt;
+  final DateTime? dtTxt;
 
   @override
   String toString() {
@@ -272,40 +276,41 @@ class _$ForcastModelImpl implements _ForcastModel {
 
 abstract class _ForcastModel implements ForecastModel {
   const factory _ForcastModel(
-      {required final int dt,
-      required final WeatherInfoModel main,
-      required final List<WeatherInfoModel> weather,
-      required final CloudsModel clouds,
-      required final WindModel wind,
-      required final int visibility,
-      required final double pop,
-      required final DateTime dtTxt}) = _$ForcastModelImpl;
+      {final int? dt,
+      final WeatherInfoModel? main,
+      @JsonKey(defaultValue: []) final List<WeatherInfoModel>? weather,
+      final CloudsModel? clouds,
+      final WindModel? wind,
+      final int? visibility,
+      final double? pop,
+      final DateTime? dtTxt}) = _$ForcastModelImpl;
 
   factory _ForcastModel.fromJson(Map<String, dynamic> json) = _$ForcastModelImpl.fromJson;
 
   @override
-  int get dt;
+  int? get dt;
 
   @override
-  WeatherInfoModel get main;
+  WeatherInfoModel? get main;
 
   @override
-  List<WeatherInfoModel> get weather;
+  @JsonKey(defaultValue: [])
+  List<WeatherInfoModel>? get weather;
 
   @override
-  CloudsModel get clouds;
+  CloudsModel? get clouds;
 
   @override
-  WindModel get wind;
+  WindModel? get wind;
 
   @override
-  int get visibility;
+  int? get visibility;
 
   @override
-  double get pop;
+  double? get pop;
 
   @override
-  DateTime get dtTxt;
+  DateTime? get dtTxt;
 
   @override
   @JsonKey(ignore: true)

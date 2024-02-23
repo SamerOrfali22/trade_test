@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weather_app/base/presentation/pages/base_page.dart';
 import 'package:weather_app/base/presentation/widgets/rx/base_result_future_builder.dart';
@@ -34,9 +35,11 @@ class _WeatherPageState extends BasePage<WeatherPage, WeatherViewmodel> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: 100.h),
-                WeatherHeaderWidget(
-                  model: data,
-                  cityName: viewmodel.cityName,
+                Obx(
+                  () => WeatherHeaderWidget(
+                    model: data,
+                    cityName: viewmodel.forecastViewmodel.city.value?.name,
+                  ),
                 ),
               ],
             );

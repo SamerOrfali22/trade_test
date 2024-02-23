@@ -9,14 +9,14 @@ part 'forecast_model.g.dart';
 @freezed
 class ForecastModel with _$ForecastModel {
   const factory ForecastModel({
-    required int dt,
-    required WeatherInfoModel main,
-    required List<WeatherInfoModel> weather,
-    required CloudsModel clouds,
-    required WindModel wind,
-    required int visibility,
-    required double pop,
-    required DateTime dtTxt,
+    int? dt,
+    WeatherInfoModel? main,
+    @JsonKey(defaultValue: []) List<WeatherInfoModel>? weather,
+    CloudsModel? clouds,
+    WindModel? wind,
+    int? visibility,
+    double? pop,
+    DateTime? dtTxt,
   }) = _ForcastModel;
 
   factory ForecastModel.fromJson(Map<String, dynamic> json) => _$ForecastModelFromJson(json);

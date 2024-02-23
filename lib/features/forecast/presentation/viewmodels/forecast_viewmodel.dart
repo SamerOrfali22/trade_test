@@ -15,7 +15,7 @@ class ForecastViewmodel extends BaseViewmodel {
 
   final selectedLat = RxDouble(25.2582);
   final selectedLon = RxDouble(55.3047);
-  late final CityModel city;
+  Rxn<CityModel> city = Rxn<CityModel>();
 
   RxList<ForecastModel> todayList = <ForecastModel>[].obs;
   RxList<ForecastModel> futureDailyList = <ForecastModel>[].obs;
@@ -33,22 +33,22 @@ class ForecastViewmodel extends BaseViewmodel {
       )
           .doOnDataResult(
         (result) {
-          city = result.value.city;
-          addToList(result.value.list);
+          city.value = result.value.city;
+          addToList(result.value.list ?? []);
         },
       );
 
   void addToList(List<ForecastModel> list) {
     list.forEach((element) {
       //today
-      if (element.dtTxt.difference(DateTime.now()).inDays == 0) {
+      if (element.dtTxt?.difference(DateTime.now()).inDays == 0) {
         todayList.add(element);
       }
       //future
       else {
         if (futureDailyList.isNotEmpty) {
           final last = futureDailyList.last;
-          if (last.dtTxt.weekday != element.dtTxt.weekday) {
+          if (last.dtTxt?.weekday != element.dtTxt?.weekday) {
             futureDailyList.add(element);
           }
         } else {

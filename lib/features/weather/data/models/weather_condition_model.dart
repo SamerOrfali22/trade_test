@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 class WeatherConditionModel {
-  final int id;
-  final String main;
-  final String description;
-  final String icon;
+  final int? id;
+  final String? main;
+  final String? description;
+  final String? icon;
 
   WeatherConditionModel({
-    required this.id,
-    required this.main,
-    required this.description,
-    required this.icon,
+    this.id,
+    this.main,
+    this.description,
+    this.icon,
   });
 
   factory WeatherConditionModel.fromRawJson(String str) => WeatherConditionModel.fromJson(json.decode(str));
@@ -18,10 +18,10 @@ class WeatherConditionModel {
   String toRawJson() => json.encode(toJson());
 
   factory WeatherConditionModel.fromJson(Map<String, dynamic> json) => WeatherConditionModel(
-        id: json["id"],
-        main: json["main"],
-        description: json["description"],
-        icon: json["icon"],
+        id: json["id"] == null ? null : json["id"],
+        main: json["main"] == null ? null : json["main"],
+        description: json["description"] == null ? null : json["description"],
+        icon: json["icon"] == null ? null : json["icon"],
       );
 
   Map<String, dynamic> toJson() => {

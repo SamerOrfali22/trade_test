@@ -3,16 +3,16 @@ import 'dart:convert';
 class SunInfoModel {
   final int? id;
   final int? type;
-  final int sunrise;
-  final int sunset;
-  final String country;
+  final int? sunrise;
+  final int? sunset;
+  final String? country;
 
   SunInfoModel({
     this.id,
     this.type,
-    required this.sunrise,
-    required this.sunset,
-    required this.country,
+    this.sunrise,
+    this.sunset,
+    this.country,
   });
 
   factory SunInfoModel.fromRawJson(String str) => SunInfoModel.fromJson(json.decode(str));
@@ -22,9 +22,9 @@ class SunInfoModel {
   factory SunInfoModel.fromJson(Map<String, dynamic> json) => SunInfoModel(
         id: json["id"] == null ? null : json["id"],
         type: json["type"] == null ? null : json["type"],
-        sunrise: json["sunrise"],
-        sunset: json["sunset"],
-        country: json["country"],
+        sunrise: json["sunrise"] == null ? null : json["sunrise"],
+        sunset: json["sunset"] == null ? null : json["sunset"],
+        country: json["country"] == null ? null : json["country"],
       );
 
   Map<String, dynamic> toJson() => {
