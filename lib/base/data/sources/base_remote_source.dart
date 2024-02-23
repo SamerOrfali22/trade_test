@@ -1,11 +1,7 @@
-import 'dart:convert';
+import 'dart:io';
 
 import 'package:dart_kit/dart_kit.dart';
 import 'package:dio/dio.dart';
-import 'package:weather_app/base/data/models/base_list_response_model.dart';
-import 'package:weather_app/base/data/models/base_response_model.dart';
-import 'package:weather_app/base/data/models/paginated_model.dart';
-import 'package:weather_app/base/data/models/paginated_request_model.dart';
 import 'package:weather_app/base/data/networking/http_client.dart';
 import 'package:weather_app/base/data/sources/token_type.dart';
 
@@ -17,23 +13,7 @@ abstract class BaseRemoteSource with Loggable {
   /// The base HTTP client used to make requests.
   final HttpClient _client;
 
-  /// Makes an HTTP request to the specified endpoint with the specified method and parameters.
-  ///
-  /// Returns a [Future] that completes with the result of the request as a [Result] object.
-  ///
-  /// The following parameters are available:
-  /// [method] : The HTTP method to use for the request (e.g. GET, POST, DELETE).
-  /// [endpoint] : The endpoint to make the request to.
-  /// [serializer] : A function that takes the JSON response data and returns an object of type `T`.
-  /// [data] : The data to send with the request.
-  /// [queryParameters] : Query parameters to include in the request.
-  /// [headers] : HTTP headers to include in the request.
-  /// [withAuth] : Whether to include an authorization header in the request. Defaults to `true`.
-  /// [onSendProgress] : A callback to be called when the request is being sent.
-  /// [onReceiveProgress] : A callback to be called when the response is being received.
-  /// [cancelToken] : A token that can be used to cancel the request.
-  /// [tokenType] : Auth token type.
-  Future<Result<T>> baseRequest<T>({
+  Future<Result<T>> _baseRequest<T>({
     required HttpMethod method,
     required String endpoint,
     required T Function(dynamic json) serializer,
@@ -45,22 +25,43 @@ abstract class BaseRemoteSource with Loggable {
     ProgressCallback? onReceiveProgress,
     CancelToken? cancelToken,
     TokenType tokenType = TokenType.Bearer,
+    HttpContent contentType = HttpContent.Form,
+    String? Function(Map<String, dynamic>)? customErrorHandler,
+    String? baseUrl,
   }) async {
     // add auth flag to headers if `withAuth` is true
-    final Options options = Options(headers: headers, extra: (!withAuth ? TokenType.None : tokenType).asExtra);
-
+    final Options options = Options(
+      headers: (headers ?? {})
+        ..addAll({
+          if (method == HttpMethod.POST || method == HttpMethod.PATCH) HttpHeaders.contentTypeHeader: contentType.value,
+          HttpHeaders.acceptHeader: "application/json",
+          HttpHeaders.userAgentHeader: "Ta3leem/org.ta3leem.mobile",
+          HttpHeaders.connectionHeader: "Keep-Alive",
+          HttpHeaders.acceptEncodingHeader: "gzip;q=1.0,compress;q=0.5",
+          HttpHeaders.acceptLanguageHeader: "en-US;q=1.0,ar-AS;q=0.9",
+          "Keep-Alive": "timeout=15, max=1000",
+        }),
+      extra: (!withAuth ? TokenType.None : tokenType).asExtra
+        ..addAll({
+          if (customErrorHandler != null) 'custom_error_handler': customErrorHandler,
+        }),
+    );
     return _client
         .request(
-          method,
           endpoint,
           data: data,
-          queryParameters: queryParameters,
+          method: method,
           options: options,
+          queryParameters: queryParameters,
           cancelToken: cancelToken,
-          onReceiveProgress: onReceiveProgress,
           onSendProgress: onSendProgress,
+          onReceiveProgress: onReceiveProgress,
+          baseUrl: baseUrl,
         )
-        .mapToResult(serializer, loggerTag);
+        ._mapToResultBySerializer(
+          loggerTag,
+          (data) => T == bool && (data == null || data == '') ? (true as T) : serializer(data),
+        );
   }
 
   /// Makes an HTTP request to the specified endpoint with the specified method and parameters.
@@ -82,7 +83,7 @@ abstract class BaseRemoteSource with Loggable {
   Future<Result<T>> request<T>({
     required HttpMethod method,
     required String endpoint,
-    required T Function(dynamic json) serializer,
+    required T Function(Map<String, dynamic> json) serializer,
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
@@ -91,145 +92,47 @@ abstract class BaseRemoteSource with Loggable {
     ProgressCallback? onReceiveProgress,
     CancelToken? cancelToken,
     TokenType tokenType = TokenType.Bearer,
+    HttpContent contentType = HttpContent.Form,
+    String? Function(Map<String, dynamic>)? customErrorHandler,
+    String? baseUrl,
   }) =>
-      baseRequest<BaseResponseModel<T>>(
+      _baseRequest(
         method: method,
         endpoint: endpoint,
-        serializer: (json) => BaseResponseModel.fromJson<T>(json, serializer),
+        serializer: (data) => serializer(data == null ? {} : data as Map<String, dynamic>),
+        cancelToken: cancelToken,
+        contentType: contentType,
         data: data,
+        headers: headers,
+        onReceiveProgress: onReceiveProgress,
+        onSendProgress: onSendProgress,
         queryParameters: queryParameters,
-        headers: headers,
-        withAuth: withAuth,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-        cancelToken: cancelToken,
         tokenType: tokenType,
-      ).then(
-        (it) => it.when(
-          onLoading: (origin) => Result<T>.loading(origin),
-          onError: (origin, error, st) => Result<T>.error(origin, error, st),
-          onData: (origin, value) => Result<T>.data(origin, value.data ?? serializer({})),
-        ),
-      );
-
-  /// Makes an HTTP request to the specified endpoint with the specified method and parameters and return list of items.
-  ///
-  /// Returns a [Future] that completes with the result of the request as a [Result] object.
-  ///
-  /// The following parameters are available:
-  /// [method] : The HTTP method to use for the request (e.g. GET, POST, DELETE).
-  /// [endpoint] : The endpoint to make the request to.
-  /// [serializer] : A function that takes the JSON response data and returns an object of type `T`.
-  /// [data] : The data to send with the request.
-  /// [queryParameters] : Query parameters to include in the request.
-  /// [headers] : HTTP headers to include in the request.
-  /// [withAuth] : Whether to include an authorization header in the request. Defaults to `true`.
-  /// [onSendProgress] : A callback to be called when the request is being sent.
-  /// [onReceiveProgress] : A callback to be called when the response is being received.
-  /// [cancelToken] : A token that can be used to cancel the request.
-  /// [tokenType] : Auth token type.
-  Future<Result<List<T>>> listRequest<T>({
-    required HttpMethod method,
-    required String endpoint,
-    required T Function(dynamic json) serializer,
-    dynamic data,
-    Map<String, dynamic>? queryParameters,
-    Map<String, dynamic>? headers,
-    bool withAuth = true,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-    CancelToken? cancelToken,
-    TokenType tokenType = TokenType.Bearer,
-  }) =>
-      baseRequest<BaseListResponseModel<T>>(
-        method: method,
-        endpoint: endpoint,
-        serializer: (json) => BaseListResponseModel.fromJson<T>(json, serializer),
-        data: data,
-        queryParameters: queryParameters,
-        headers: headers,
         withAuth: withAuth,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-        cancelToken: cancelToken,
-        tokenType: tokenType,
-      ).then(
-        (it) => it.when(
-          onLoading: (origin) => Result<List<T>>.loading(origin),
-          onError: (origin, error, st) => Result<List<T>>.error(origin, error, st),
-          onData: (origin, value) => Result<List<T>>.data(origin, value.data!),
-        ),
-      );
-
-  /// Makes an HTTP request to the specified endpoint with the specified method and parameters and return
-  /// paginated response of items.
-  ///
-  /// Returns a [Future] that completes with the result of the request as a [Result] object.
-  ///
-  /// The following parameters are available:
-  /// [page] : The offset required to be sent.
-  /// [pageSize] : The limit required to be sent.
-  /// [method] : The HTTP method to use for the request (e.g. GET, POST, DELETE).
-  /// [endpoint] : The endpoint to make the request to.
-  /// [serializer] : A function that takes the JSON response data and returns an object of type `T`.
-  /// [data] : The data to send with the request.
-  /// [queryParameters] : Query parameters to include in the request.
-  /// [headers] : HTTP headers to include in the request.
-  /// [withAuth] : Whether to include an authorization header in the request. Defaults to `true`.
-  /// [onSendProgress] : A callback to be called when the request is being sent.
-  /// [onReceiveProgress] : A callback to be called when the response is being received.
-  /// [cancelToken] : A token that can be used to cancel the request.
-  /// [tokenType] : Auth token type.
-  Future<Result<PaginatedModel<T>>> paginatedRequest<T>({
-    required PaginatedRequestModel pager,
-    required HttpMethod method,
-    required String endpoint,
-    required T Function(dynamic json) serializer,
-    dynamic data,
-    Map<String, dynamic>? queryParameters,
-    Map<String, dynamic>? headers,
-    bool withAuth = true,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-    CancelToken? cancelToken,
-    TokenType tokenType = TokenType.Bearer,
-  }) =>
-      baseRequest<BaseResponseModel<PaginatedModel<T>>>(
-        method: method,
-        endpoint: endpoint,
-        serializer: (json) => BaseResponseModel.paginatedFromJson<T>(json, serializer),
-        data: data,
-        queryParameters: {
-          ...pager.toJson(),
-          ...?queryParameters,
-        },
-        headers: headers,
-        withAuth: withAuth,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-        cancelToken: cancelToken,
-        tokenType: tokenType,
-      ).then(
-        (it) => it.when(
-          onLoading: (origin) => Result<PaginatedModel<T>>.loading(origin),
-          onError: (origin, error, st) => Result<PaginatedModel<T>>.error(origin, error, st),
-          onData: (origin, value) => Result<PaginatedModel<T>>.data(origin, value.data!),
-        ),
+        customErrorHandler: customErrorHandler,
+        baseUrl: baseUrl,
       );
 }
 
 extension ResponseExtensions on Future<Response<dynamic>> {
-  Future<Result<R>> mapToResult<R>(R Function(dynamic json) serializer, String loggerTag) => then((it) {
-        return Result<R>.data(
-          ResultOrigin.network,
-          it.data == null
-              ? const BaseResponseModel(status: 200, data: true) as R
-              : (serializer.call(jsonDecode(it.data)) ?? it.data! as R),
-        );
-      }).catchError(
-        (it, st) {
-          Logger.e('$loggerTag RESPONSE: e: $it\nst: $st');
-          return Result<R>.error(ResultOrigin.network, it, st);
-        },
-      );
+  /// Processes the response and returns the result as a [Result] object.
+  ///
+  /// The following parameters are available:
+  /// [serializer] : A function that takes the JSON response data and returns an object of type `R`.
+  Future<Result<R>> _processCall<R>(
+    String loggerTag, {
+    R Function(dynamic json)? serializer,
+  }) =>
+      then((it) {
+        if (it.isSuccess) {
+          return Result<R>.data(ResultOrigin.network, serializer?.call(it.data) ?? it.data! as R);
+        }
+        return Result<R>.error(ResultOrigin.network, it);
+      }).catchError((Object it, StackTrace st) {
+        Logger.e('$loggerTag:', it, st);
+        return Result<R>.error(ResultOrigin.network, it, st);
+      });
+
+  Future<Result<R>> _mapToResultBySerializer<R>(String loggerTag, R Function(dynamic json) serializer) =>
+      _processCall<R>(loggerTag, serializer: serializer);
 }

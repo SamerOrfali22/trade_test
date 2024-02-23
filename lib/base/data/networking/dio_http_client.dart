@@ -12,24 +12,34 @@ class DioHttpClient implements HttpClient {
 
   @override
   Future<Response> request(
-    HttpMethod method,
     String uri, {
-    data,
+    required HttpMethod method,
+    dynamic data,
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
+    String? baseUrl,
   }) =>
       _processNetworkCall(
-        () => _dio.request(
-          uri,
-          data: data,
-          queryParameters: queryParameters,
-          options: (options ?? Options()).copyWith(method: method.name),
-          cancelToken: cancelToken,
-          onReceiveProgress: onReceiveProgress,
-          onSendProgress: onSendProgress,
+        () => _dio.fetch(
+          RequestOptions(
+            path: uri,
+            method: method.name,
+            data: data,
+            queryParameters: queryParameters,
+            onSendProgress: onSendProgress,
+            onReceiveProgress: onReceiveProgress,
+            cancelToken: cancelToken,
+            headers: options?.headers,
+            extra: options?.extra,
+            // base options
+            baseUrl: baseUrl ?? _dio.options.baseUrl,
+            connectTimeout: _dio.options.connectTimeout,
+            sendTimeout: _dio.options.sendTimeout,
+            receiveTimeout: _dio.options.receiveTimeout,
+          ),
         ),
       );
 
