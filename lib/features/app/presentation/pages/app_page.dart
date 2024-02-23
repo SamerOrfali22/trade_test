@@ -1,6 +1,7 @@
 import 'package:dart_kit/dart_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/state_manager.dart';
 import 'package:rx_viewmodels/viewmodel.dart';
@@ -24,6 +25,12 @@ class AppPage extends StatefulWidget {
 }
 
 class _AppPageState extends BasePage<AppPage, AppViewmodel> {
+  @override
+  void initState() {
+    super.initState();
+    FlutterNativeSplash.remove();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -53,6 +60,7 @@ class _AppPageState extends BasePage<AppPage, AppViewmodel> {
             // NAVIGATION
             routeInformationParser: Resources.router.defaultRouteParser(),
             // MEDIA QUERY
+            routerDelegate: Resources.router.delegate(),
             builder: (context, child) {
               Resources.setup(context);
 
