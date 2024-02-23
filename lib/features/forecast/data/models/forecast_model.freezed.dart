@@ -25,7 +25,7 @@ mixin _$ForecastModel {
   WeatherInfoModel? get main => throw _privateConstructorUsedError;
 
   @JsonKey(defaultValue: [])
-  List<WeatherInfoModel>? get weather => throw _privateConstructorUsedError;
+  List<WeatherConditionModel>? get weather => throw _privateConstructorUsedError;
 
   CloudsModel? get clouds => throw _privateConstructorUsedError;
 
@@ -35,6 +35,7 @@ mixin _$ForecastModel {
 
   double? get pop => throw _privateConstructorUsedError;
 
+  @JsonKey(name: 'dt_txt', fromJson: _dateTimeFromJson)
   DateTime? get dtTxt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,12 +53,12 @@ abstract class $ForecastModelCopyWith<$Res> {
   $Res call(
       {int? dt,
       WeatherInfoModel? main,
-      @JsonKey(defaultValue: []) List<WeatherInfoModel>? weather,
+      @JsonKey(defaultValue: []) List<WeatherConditionModel>? weather,
       CloudsModel? clouds,
       WindModel? wind,
       int? visibility,
       double? pop,
-      DateTime? dtTxt});
+      @JsonKey(name: 'dt_txt', fromJson: _dateTimeFromJson) DateTime? dtTxt});
 }
 
 /// @nodoc
@@ -94,7 +95,7 @@ class _$ForecastModelCopyWithImpl<$Res, $Val extends ForecastModel> implements $
       weather: freezed == weather
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as List<WeatherInfoModel>?,
+              as List<WeatherConditionModel>?,
       clouds: freezed == clouds
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
@@ -129,12 +130,12 @@ abstract class _$$ForcastModelImplCopyWith<$Res> implements $ForecastModelCopyWi
   $Res call(
       {int? dt,
       WeatherInfoModel? main,
-      @JsonKey(defaultValue: []) List<WeatherInfoModel>? weather,
+      @JsonKey(defaultValue: []) List<WeatherConditionModel>? weather,
       CloudsModel? clouds,
       WindModel? wind,
       int? visibility,
       double? pop,
-      DateTime? dtTxt});
+      @JsonKey(name: 'dt_txt', fromJson: _dateTimeFromJson) DateTime? dtTxt});
 }
 
 /// @nodoc
@@ -167,7 +168,7 @@ class __$$ForcastModelImplCopyWithImpl<$Res> extends _$ForecastModelCopyWithImpl
       weather: freezed == weather
           ? _value._weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as List<WeatherInfoModel>?,
+              as List<WeatherConditionModel>?,
       clouds: freezed == clouds
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
@@ -198,12 +199,12 @@ class _$ForcastModelImpl implements _ForcastModel {
   const _$ForcastModelImpl(
       {this.dt,
       this.main,
-      @JsonKey(defaultValue: []) final List<WeatherInfoModel>? weather,
+      @JsonKey(defaultValue: []) final List<WeatherConditionModel>? weather,
       this.clouds,
       this.wind,
       this.visibility,
       this.pop,
-      this.dtTxt})
+      @JsonKey(name: 'dt_txt', fromJson: _dateTimeFromJson) this.dtTxt})
       : _weather = weather;
 
   factory _$ForcastModelImpl.fromJson(Map<String, dynamic> json) => _$$ForcastModelImplFromJson(json);
@@ -212,11 +213,11 @@ class _$ForcastModelImpl implements _ForcastModel {
   final int? dt;
   @override
   final WeatherInfoModel? main;
-  final List<WeatherInfoModel>? _weather;
+  final List<WeatherConditionModel>? _weather;
 
   @override
   @JsonKey(defaultValue: [])
-  List<WeatherInfoModel>? get weather {
+  List<WeatherConditionModel>? get weather {
     final value = _weather;
     if (value == null) return null;
     if (_weather is EqualUnmodifiableListView) return _weather;
@@ -233,6 +234,7 @@ class _$ForcastModelImpl implements _ForcastModel {
   @override
   final double? pop;
   @override
+  @JsonKey(name: 'dt_txt', fromJson: _dateTimeFromJson)
   final DateTime? dtTxt;
 
   @override
@@ -278,12 +280,12 @@ abstract class _ForcastModel implements ForecastModel {
   const factory _ForcastModel(
       {final int? dt,
       final WeatherInfoModel? main,
-      @JsonKey(defaultValue: []) final List<WeatherInfoModel>? weather,
+      @JsonKey(defaultValue: []) final List<WeatherConditionModel>? weather,
       final CloudsModel? clouds,
       final WindModel? wind,
       final int? visibility,
       final double? pop,
-      final DateTime? dtTxt}) = _$ForcastModelImpl;
+      @JsonKey(name: 'dt_txt', fromJson: _dateTimeFromJson) final DateTime? dtTxt}) = _$ForcastModelImpl;
 
   factory _ForcastModel.fromJson(Map<String, dynamic> json) = _$ForcastModelImpl.fromJson;
 
@@ -295,7 +297,7 @@ abstract class _ForcastModel implements ForecastModel {
 
   @override
   @JsonKey(defaultValue: [])
-  List<WeatherInfoModel>? get weather;
+  List<WeatherConditionModel>? get weather;
 
   @override
   CloudsModel? get clouds;
@@ -310,6 +312,7 @@ abstract class _ForcastModel implements ForecastModel {
   double? get pop;
 
   @override
+  @JsonKey(name: 'dt_txt', fromJson: _dateTimeFromJson)
   DateTime? get dtTxt;
 
   @override

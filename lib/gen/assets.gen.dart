@@ -12,14 +12,23 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/cloud_icon.svg
+  String get cloudIcon => 'assets/icons/cloud_icon.svg';
+
   /// File path: assets/icons/humidity_icon.svg
   String get humidityIcon => 'assets/icons/humidity_icon.svg';
+
+  /// File path: assets/icons/rainy_icon.svg
+  String get rainyIcon => 'assets/icons/rainy_icon.svg';
+
+  /// File path: assets/icons/sunny_icon.svg
+  String get sunnyIcon => 'assets/icons/sunny_icon.svg';
 
   /// File path: assets/icons/wind_icon.svg
   String get windIcon => 'assets/icons/wind_icon.svg';
 
   /// List of all assets
-  List<String> get values => [humidityIcon, windIcon];
+  List<String> get values => [cloudIcon, humidityIcon, rainyIcon, sunnyIcon, windIcon];
 }
 
 class $AssetsImagesGen {
