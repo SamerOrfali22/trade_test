@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:dart_kit/dart_kit.dart';
 import 'package:dio/dio.dart';
-import 'package:weather_app/base/utils/constants/app_constants.dart';
+import 'package:weather_app/base/utils/app_constants.dart';
 
 class ApiKeyInterceptor extends Interceptor with Loggable {
   ApiKeyInterceptor();

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weather_app/base/presentation/pages/base_page.dart';
 import 'package:weather_app/base/presentation/widgets/rx/base_result_future_builder.dart';
-import 'package:weather_app/base/utils/constants/assets_constants.dart';
+import 'package:weather_app/features/app/presentation/app_background_widget.dart';
 import 'package:weather_app/features/app/presentation/viewmodels/app_viewmodel.dart';
 import 'package:weather_app/features/weather/presentation/viewmodels/weather_viewmodel.dart';
 import 'package:weather_app/features/weather/presentation/widgets/weather_header_widget.dart';
@@ -24,15 +24,7 @@ class _WeatherPageState extends BasePage<WeatherPage, WeatherViewmodel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              appViewmodel.theme.isLight ? AssetsConstants.lightBackGroundImage : AssetsConstants.darkBackGroundImage,
-            ),
-            fit: BoxFit.cover,
-          ),
-        ),
+      body: AppBackgroundWidget(
         child: BaseResultFutureBuilder(
           future: viewmodel.futureWeatherModel,
           onRetry: () => viewmodel.fetchWeather(),

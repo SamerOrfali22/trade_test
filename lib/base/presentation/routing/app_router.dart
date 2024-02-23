@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:weather_app/features/forecast/presentation/pages/forecasts_page.dart';
 import 'package:weather_app/features/weather/presentation/pages/weather_page.dart';
 
 part 'app_router.gr.dart';
@@ -12,5 +13,6 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         //* App Routes *//
         AutoRoute(path: '/', page: WeatherRoute.page),
+        AutoRoute(path: '/forecast', page: ForecastRoute.page),
       ];
 }

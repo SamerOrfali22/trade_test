@@ -1,6 +1,6 @@
 import 'package:dart_kit/dart_kit.dart';
 import 'package:injectable/injectable.dart';
-import 'package:weather_app/base/utils/constants/app_constants.dart';
+import 'package:weather_app/base/utils/app_constants.dart';
 import 'package:weather_app/features/app/data/sources/locale_source/language_local_source.dart';
 import 'package:weather_app/features/app/data/sources/locale_source/theme_locale_source.dart';
 import 'package:weather_app/features/app/domain/repos/app_repo.dart';

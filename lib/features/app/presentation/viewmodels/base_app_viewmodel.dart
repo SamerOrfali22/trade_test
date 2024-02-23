@@ -4,7 +4,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:rx_viewmodels/viewmodel.dart';
 import 'package:rxdart/transformers.dart';
 import 'package:weather_app/base/presentation/viewmodels/base_viewmodel.dart';
-import 'package:weather_app/base/utils/constants/app_constants.dart';
+import 'package:weather_app/base/utils/app_constants.dart';
 import 'package:weather_app/base/utils/formatters/app_formatter.dart';
 import 'package:weather_app/features/app/domain/repos/app_repo.dart';
 import 'package:weather_app/features/app/presentation/ui-models/languages_enum.dart';

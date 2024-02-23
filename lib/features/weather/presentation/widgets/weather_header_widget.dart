@@ -3,9 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/base/utils/ext/build_context_ext.dart';
 import 'package:weather_app/features/weather/data/models/weather_response_model.dart';
+import 'package:weather_app/gen/assets.gen.dart';
 
 class WeatherHeaderWidget extends StatelessWidget {
-  const WeatherHeaderWidget({Key? key, required this.model,this.cityName}) : super(key: key);
+  const WeatherHeaderWidget({Key? key, required this.model, this.cityName}) : super(key: key);
   final WeatherResponseModel model;
   final String? cityName;
 
@@ -63,7 +64,7 @@ class WeatherHeaderWidget extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SvgPicture.asset('assets/icons/humidity_icon.svg'),
+                  SvgPicture.asset(Assets.icons.humidityIcon),
                   SizedBox(width: 5.w),
                   Text(
                     model.main.humidity.toString() + '%',
@@ -74,7 +75,7 @@ class WeatherHeaderWidget extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SvgPicture.asset('assets/icons/wind_icon.svg'),
+                  SvgPicture.asset(Assets.icons.windIcon),
                   SizedBox(width: 5.w),
                   Text(
                     model.wind.speed.floor().toString() + ' km/h',
