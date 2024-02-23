@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 
 /// An enumeration of themes.
 enum ThemeEnum {
-  /// The system's default theme.
-  SystemDefault('system'),
-
   /// The light theme.
   Light('light'),
 
@@ -21,4 +18,7 @@ enum ThemeEnum {
   ThemeMode get asThemeModel => ThemeMode.values.byName(theme);
 
   bool get isLight => this == ThemeEnum.Light;
+
+  static ThemeEnum get themeBasedOnDay =>
+      (DateTime.now().hour > 6 && DateTime.now().hour < 18) ? ThemeEnum.Light : ThemeEnum.Dark;
 }

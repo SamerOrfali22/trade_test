@@ -42,7 +42,10 @@ class _WeatherPageState extends BasePage<WeatherPage, WeatherViewmodel> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: 100.h),
-                WeatherHeaderWidget(model: data),
+                WeatherHeaderWidget(
+                  model: data,
+                  cityName: viewmodel.cityName,
+                ),
               ],
             );
           },

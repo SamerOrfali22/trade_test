@@ -27,7 +27,7 @@ class WeatherViewmodel extends BaseViewmodel {
 
   final selectedLat = RxDouble(25.2582);
   final selectedLon = RxDouble(55.3047);
-  final cityName = RxnString();
+  String? cityName;
 
   late final futureWeatherModel = RxResultFuture<WeatherResponseModel>();
 
@@ -61,7 +61,7 @@ class WeatherViewmodel extends BaseViewmodel {
   Future<void> setCityName(Position position) async {
     List<Placemark> placeMarks = await placemarkFromCoordinates(position.latitude, position.longitude);
     final isEnglishLang = GetIt.I<AppViewmodel>().language.isEnglish;
-    cityName.value = isEnglishLang ? placeMarks.second?.locality : placeMarks.first.locality;
+    cityName = isEnglishLang ? placeMarks.second?.locality : placeMarks.first.locality;
   }
 
   @override

@@ -26,5 +26,5 @@ class AppRepositoryImpl implements AppRepository {
   Future<void> changeTheme(ThemeEnum theme) => _themeLocalSource.write('', theme);
 
   @override
-  Stream<ThemeEnum> observeTheme() => _themeLocalSource.reader('').mapNullTo(() => ThemeEnum.SystemDefault);
+  Stream<ThemeEnum> observeTheme() => _themeLocalSource.reader('').mapNullTo(() => ThemeEnum.themeBasedOnDay);
 }

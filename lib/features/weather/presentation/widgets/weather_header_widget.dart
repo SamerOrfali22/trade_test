@@ -5,8 +5,9 @@ import 'package:weather_app/base/utils/ext/build_context_ext.dart';
 import 'package:weather_app/features/weather/data/models/weather_response_model.dart';
 
 class WeatherHeaderWidget extends StatelessWidget {
-  const WeatherHeaderWidget({Key? key, required this.model}) : super(key: key);
+  const WeatherHeaderWidget({Key? key, required this.model,this.cityName}) : super(key: key);
   final WeatherResponseModel model;
+  final String? cityName;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class WeatherHeaderWidget extends StatelessWidget {
               Icon(Icons.location_on, color: context.colors.onPrimary, size: 27),
               Flexible(
                 child: Text(
-                  model.name,
+                  cityName ?? model.name,
                   style: context.headlineLarge?.copyWith(fontSize: 32, color: context.colors.onPrimary),
                   textAlign: TextAlign.center,
                 ),
@@ -32,19 +33,19 @@ class WeatherHeaderWidget extends StatelessWidget {
         Padding(
           padding: EdgeInsetsDirectional.only(start: 20.0.w),
           child: Text(
-            "${model.main.temp}°",
+            "${model.main.temp.floor()}°",
             style: context.headlineLarge?.copyWith(fontSize: 60, color: context.colors.onPrimary),
           ),
         ),
         SizedBox(height: 5.h),
         Text(
           model.weather.first.description,
-          style: context.headlineLarge?.copyWith(fontSize: 20, color: context.colors.onPrimary),
+          style: context.titleLarge?.copyWith(fontSize: 20, color: context.colors.onPrimary),
         ),
         SizedBox(height: 10.h),
         Text(
-          'Max:${model.main.tempMax}°    Min${model.main.tempMin}°',
-          style: context.headlineMedium?.copyWith(color: context.colors.onPrimary),
+          'Max : ${model.main.tempMax.floor()}°    Min : ${model.main.tempMin.floor()}°',
+          style: context.titleLarge?.copyWith(color: context.colors.onPrimary),
         ),
         Container(
           height: 47,

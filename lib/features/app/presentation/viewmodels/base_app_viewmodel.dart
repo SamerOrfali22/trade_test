@@ -23,7 +23,7 @@ abstract class BaseAppViewmodel extends BaseViewmodel {
   LanguageEnum get language => _language.value;
 
   /// The theme of the app.
-  late final Rx<ThemeEnum> _theme = ThemeEnum.SystemDefault.obs..disposeBy(this);
+  late final Rx<ThemeEnum> _theme = ThemeEnum.themeBasedOnDay.obs..disposeBy(this);
 
   ThemeEnum get theme => _theme.value;
 
