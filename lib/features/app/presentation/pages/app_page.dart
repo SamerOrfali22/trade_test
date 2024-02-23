@@ -9,7 +9,7 @@ import 'package:weather_app/base/presentation/pages/base_page.dart';
 import 'package:weather_app/base/presentation/pages/no_internet_page.dart';
 import 'package:weather_app/base/presentation/theme/app_theme.dart';
 import 'package:weather_app/base/presentation/widgets/base_snackbar.dart';
-import 'package:weather_app/base/utils/app_constants.dart';
+import 'package:weather_app/base/utils/constants/app_constants.dart';
 import 'package:weather_app/base/utils/localizations_generated/l10n.dart';
 import 'package:weather_app/base/utils/resources/resources.dart';
 import 'package:weather_app/base/utils/ui_utils/animations/switchers_animation.dart';

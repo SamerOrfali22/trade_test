@@ -49,7 +49,7 @@ class WeatherHeaderWidget extends StatelessWidget {
         Container(
           height: 47,
           decoration: ShapeDecoration(
-            color: context.colors.onPrimaryContainer.withOpacity(0.5),
+            color: context.colors.onTertiaryContainer.withOpacity(0.5),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),

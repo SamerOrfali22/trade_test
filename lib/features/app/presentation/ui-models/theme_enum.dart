@@ -19,4 +19,6 @@ enum ThemeEnum {
 
   /// Returns the theme as a [ThemeMode] object.
   ThemeMode get asThemeModel => ThemeMode.values.byName(theme);
+
+  bool get isLight => this == ThemeEnum.Light;
 }

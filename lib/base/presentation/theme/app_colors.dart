@@ -60,9 +60,9 @@ class AppColors extends ColorScheme {
   static AppColors _lightColorScheme() => const AppColors(
         brightness: Brightness.light,
         primary: Color(0xFF006879),
-        onPrimary: Color(0xFFFFFFFF),
-        primaryContainer: Color(0xFFA9EDFF),
-        onPrimaryContainer: Color(0xFF001F26),
+        onPrimary: Color(0xFF003640),
+        primaryContainer: Color(0xFF004E5B),
+        onPrimaryContainer: Color(0xFFA9EDFF),
         //
         secondary: Color(0xFF286C2A),
         onSecondary: Color(0xFFFFFFFF),
@@ -70,9 +70,9 @@ class AppColors extends ColorScheme {
         onSecondaryContainer: Color(0xFF002203),
         //
         tertiary: Color(0xFF006783),
-        onTertiary: Color(0xFF07244E),
-        tertiaryContainer: Color(0xFF124CB4),
-        onTertiaryContainer: Color(0xFF0B41AB),
+        onTertiary: Color(0xFF003546),
+        tertiaryContainer: Color(0xFF004D63),
+        onTertiaryContainer: Color(0xFFBCE9FF),
         //
         error: Color(0xFF9C413C),
         onError: Color(0xFFFFFFFF),
@@ -111,9 +111,9 @@ class AppColors extends ColorScheme {
   static AppColors _darkColorScheme() => const AppColors(
         brightness: Brightness.dark,
         primary: Color(0xFF54D7F2),
-        onPrimary: Color(0xFF003640),
-        primaryContainer: Color(0xFF004E5B),
-        onPrimaryContainer: Color(0xFFA9EDFF),
+        onPrimary: Color(0xFFFFFFFF),
+        primaryContainer: Color(0xFFA9EDFF),
+        onPrimaryContainer: Color(0xFF001F26),
         //
         secondary: Color(0xFF90D889),
         onSecondary: Color(0xFF003909),
@@ -121,9 +121,9 @@ class AppColors extends ColorScheme {
         onSecondaryContainer: Color(0xFFABF4A2),
         //
         tertiary: Color(0xFF64D3FF),
-        onTertiary: Color(0xFF07244E),
-        tertiaryContainer: Color(0xFF124CB4),
-        onTertiaryContainer: Color(0xFF0B41AB),
+        onTertiary: Color(0xFF003546),
+        tertiaryContainer: Color(0xFF004D63),
+        onTertiaryContainer: Color(0xFFBCE9FF),
         //
         error: Color(0xFFFFB3AD),
         onError: Color(0xFF5F1413),

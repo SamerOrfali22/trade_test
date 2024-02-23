@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weather_app/base/presentation/pages/base_page.dart';
 import 'package:weather_app/base/presentation/widgets/rx/base_result_future_builder.dart';
-import 'package:weather_app/base/utils/ext/build_context_ext.dart';
+import 'package:weather_app/base/utils/constants/assets_constants.dart';
 import 'package:weather_app/features/app/presentation/viewmodels/app_viewmodel.dart';
 import 'package:weather_app/features/weather/presentation/viewmodels/weather_viewmodel.dart';
 import 'package:weather_app/features/weather/presentation/widgets/weather_header_widget.dart';
@@ -26,14 +26,11 @@ class _WeatherPageState extends BasePage<WeatherPage, WeatherViewmodel> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment(0.22, -0.98),
-            end: Alignment(-0.22, 0.98),
-            colors: [
-              context.colors.tertiary,
-              context.colors.tertiaryContainer,
-              context.colors.onTertiaryContainer,
-            ],
+          image: DecorationImage(
+            image: AssetImage(
+              appViewmodel.theme.isLight ? AssetsConstants.lightBackGroundImage : AssetsConstants.darkBackGroundImage,
+            ),
+            fit: BoxFit.cover,
           ),
         ),
         child: BaseResultFutureBuilder(
