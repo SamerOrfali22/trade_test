@@ -1,5 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:weather_app/base/presentation/pages/base_page.dart';
 import 'package:weather_app/base/presentation/widgets/rx/base_result_future_builder.dart';
 import 'package:weather_app/base/utils/ext/build_context_ext.dart';
@@ -26,6 +27,12 @@ class _WeatherPageState extends BasePage<WeatherPage, WeatherViewmodel> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Obx(
+                () => Text(
+                  viewmodel.cityName.value ?? data.name,
+                  style: TextStyle(fontSize: 16,color: Colors.red),
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.all(16),
                 child: Text(data.base, style: context.labelMedium),

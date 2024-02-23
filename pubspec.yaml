@@ -53,6 +53,8 @@ dependencies:
   json_annotation: 4.8.1
   freezed_annotation: 2.4.1
   version: 3.0.2
+  geolocator: 11.0.0
+  geocoding: 2.2.0
 
   # FIREBASE
   firebase_core: 2.21.0
