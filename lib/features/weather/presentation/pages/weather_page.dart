@@ -1,10 +1,13 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 import 'package:weather_app/base/presentation/pages/base_page.dart';
 import 'package:weather_app/base/presentation/widgets/rx/base_result_future_builder.dart';
 import 'package:weather_app/base/utils/ext/build_context_ext.dart';
+import 'package:weather_app/features/app/presentation/viewmodels/app_viewmodel.dart';
 import 'package:weather_app/features/weather/presentation/viewmodels/weather_viewmodel.dart';
+import 'package:weather_app/features/weather/presentation/widgets/weather_header_widget.dart';
 
 @RoutePage()
 class WeatherPage extends StatefulWidget {
@@ -16,78 +19,37 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends BasePage<WeatherPage, WeatherViewmodel> {
+  AppViewmodel get appViewmodel => GetIt.I<AppViewmodel>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BaseResultFutureBuilder(
-        future: viewmodel.futureWeatherModel,
-        onRetry: () => viewmodel.fetchWeather(),
-        onSuccess: (data) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Obx(
-                () => Text(
-                  viewmodel.cityName.value ?? data.name,
-                  style: TextStyle(fontSize: 16,color: Colors.red),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(data.base, style: context.labelMedium),
-              ),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(data.name, style: context.labelMedium),
-              ),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  '${data.weather.first.id}'
-                  '${data.weather.first.main}'
-                  '${data.weather.first.description}'
-                  '${data.weather.first.icon}',
-                  style: context.labelMedium,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  '${data.main.feelsLike}'
-                  '${data.main.humidity}'
-                  '${data.main.temp}'
-                  '${data.main.tempMin}'
-                  '${data.main.tempMax}'
-                  '${data.main.pressure}',
-                  style: context.labelMedium,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(data.clouds.all.toString(), style: context.labelMedium),
-              ),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  '${data.coord.lat}'
-                  '${data.coord.lon}',
-                  style: context.labelMedium,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  '${data.sys.type}'
-                  '${data.sys.sunrise}'
-                  '${data.sys.sunset}'
-                  '${data.sys.country}',
-                  style: context.labelMedium,
-                ),
-              ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment(0.22, -0.98),
+            end: Alignment(-0.22, 0.98),
+            colors: [
+              context.colors.tertiary,
+              context.colors.tertiaryContainer,
+              context.colors.onTertiaryContainer,
             ],
-          );
-        },
+          ),
+        ),
+        child: BaseResultFutureBuilder(
+          future: viewmodel.futureWeatherModel,
+          onRetry: () => viewmodel.fetchWeather(),
+          onSuccess: (data) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 100.h),
+                WeatherHeaderWidget(model: data),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

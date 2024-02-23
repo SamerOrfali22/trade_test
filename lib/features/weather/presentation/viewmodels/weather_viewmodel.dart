@@ -1,11 +1,14 @@
 import 'dart:developer';
 
+import 'package:dart_kit/dart_kit.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rx_viewmodels/viewmodel.dart';
 import 'package:weather_app/base/presentation/viewmodels/base_viewmodel.dart';
+import 'package:weather_app/features/app/presentation/viewmodels/app_viewmodel.dart';
 import 'package:weather_app/features/weather/data/models/weather_response_model.dart';
 import 'package:weather_app/features/weather/domain/repository/weather_repository.dart';
 import 'package:weather_app/features/weather/presentation/widgets/dialogs/premission_dialog.dart';
@@ -56,11 +59,9 @@ class WeatherViewmodel extends BaseViewmodel {
   }
 
   Future<void> setCityName(Position position) async {
-    List<Placemark> placeMarks = await placemarkFromCoordinates(
-      position.latitude,
-      position.longitude,
-    );
-    cityName.value = placeMarks.first.locality;
+    List<Placemark> placeMarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+    final isEnglishLang = GetIt.I<AppViewmodel>().language.isEnglish;
+    cityName.value = isEnglishLang ? placeMarks.second?.locality : placeMarks.first.locality;
   }
 
   @override

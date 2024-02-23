@@ -24,6 +24,7 @@ class WeatherRemoteSourceImpl extends BaseRemoteSource implements WeatherRemoteS
       queryParameters: {
         'lat': lat,
         'lon': lon,
+        'units': 'metric',
       },
       serializer: (json) => WeatherResponseModel.fromJson(json),
     );

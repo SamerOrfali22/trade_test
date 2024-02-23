@@ -70,9 +70,9 @@ class AppColors extends ColorScheme {
         onSecondaryContainer: Color(0xFF002203),
         //
         tertiary: Color(0xFF006783),
-        onTertiary: Color(0xFFFFFFFF),
-        tertiaryContainer: Color(0xFFBCE9FF),
-        onTertiaryContainer: Color(0xFF001F2A),
+        onTertiary: Color(0xFF07244E),
+        tertiaryContainer: Color(0xFF124CB4),
+        onTertiaryContainer: Color(0xFF0B41AB),
         //
         error: Color(0xFF9C413C),
         onError: Color(0xFFFFFFFF),
@@ -121,9 +121,9 @@ class AppColors extends ColorScheme {
         onSecondaryContainer: Color(0xFFABF4A2),
         //
         tertiary: Color(0xFF64D3FF),
-        onTertiary: Color(0xFF003546),
-        tertiaryContainer: Color(0xFF004D63),
-        onTertiaryContainer: Color(0xFFBCE9FF),
+        onTertiary: Color(0xFF07244E),
+        tertiaryContainer: Color(0xFF124CB4),
+        onTertiaryContainer: Color(0xFF0B41AB),
         //
         error: Color(0xFFFFB3AD),
         onError: Color(0xFF5F1413),
