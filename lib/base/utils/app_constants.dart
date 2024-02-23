@@ -9,7 +9,9 @@ abstract class AppConstants {
   ///
   static const Size designSize = Size(375, 812);
 
-  static String get baseUrl => '';
+  static String get baseUrl => 'https://api.openweathermap.org/';
+
+  static String get apiKey => '4e1f0c6268850e6f0f6037d4e9525191';
 
   /// The number of items to display per page in paginated lists.
   static const int paginationPageSize = 25;

@@ -2,11 +2,11 @@ import 'dart:convert';
 
 class CoordModel {
   final double lon;
-  final double lan;
+  final double lat;
 
   CoordModel({
     required this.lon,
-    required this.lan,
+    required this.lat,
   });
 
   factory CoordModel.fromRawJson(String str) => CoordModel.fromJson(json.decode(str));
@@ -15,8 +15,8 @@ class CoordModel {
 
   factory CoordModel.fromJson(Map<String, dynamic> json) => CoordModel(
         lon: json["lon"].toDouble(),
-        lan: json["lan"].toDouble(),
+        lat: json["lat"].toDouble(),
       );
 
-  Map<String, dynamic> toJson() => {"lon": lon, "lan": lan};
+  Map<String, dynamic> toJson() => {"lon": lon, "lat": lat};
 }

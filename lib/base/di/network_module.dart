@@ -4,6 +4,8 @@ import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:weather_app/base/data/interceptors/api_key_interceptor.dart';
+import 'package:weather_app/base/data/interceptors/language_interceptor.dart';
 import 'package:weather_app/base/data/networking/dio_http_client.dart';
 import 'package:weather_app/base/data/networking/http_client.dart';
 import 'package:weather_app/base/utils/app_constants.dart';
@@ -44,6 +46,8 @@ Dio _buildDio(
     Dio(options).also(
       (dio) => dio.interceptors.addAll(
         <Interceptor>[
+          LanguageInterceptor(),
+          ApiKeyInterceptor(),
           createRetryStrategy(dio),
           if (kDebugMode) PrettyDioLogger(requestHeader: true, requestBody: true)
         ],
