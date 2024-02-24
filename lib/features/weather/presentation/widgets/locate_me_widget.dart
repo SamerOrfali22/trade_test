@@ -20,7 +20,7 @@ class LocateMeWidget extends StatelessWidget {
           children: [
             Icon(Icons.location_on_outlined, color: context.colors.tertiary, size: 26),
             Text(
-              'Locate me',
+              context.localizations.locateMe,
               style: context.titleMedium?.copyWith(color: context.colors.tertiary),
               textAlign: TextAlign.center,
             )

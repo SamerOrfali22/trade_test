@@ -10,7 +10,7 @@ class WeekdayWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (time == null) return const SizedBox();
     return Text(
-      DateFormat.EEEE().format(time!).substring(0, 3),
+      DateFormat.EEEE().format(time!),
       style: context.headlineLarge?.copyWith(
         fontSize: 20,
         color: context.colors.onPrimary,

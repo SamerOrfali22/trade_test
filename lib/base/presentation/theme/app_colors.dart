@@ -121,7 +121,7 @@ class AppColors extends ColorScheme {
         secondaryContainer: Color(0xFF095314),
         onSecondaryContainer: Color(0x332C333F),
         //
-        tertiary: Color(0xFF64D3FF),
+        tertiary: Color(0xFF006783),
         onTertiary: Color(0xFF003546),
         tertiaryContainer: Color(0xFF004D63),
         onTertiaryContainer: Color(0xFFBCE9FF),

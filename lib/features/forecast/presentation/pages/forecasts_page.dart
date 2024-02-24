@@ -46,7 +46,7 @@ class _ForecastPageState extends BasePage<ForecastPage, ForecastViewmodel> {
                 ),
                 SizedBox(height: 25.h),
                 Text(
-                  'This Week',
+                  context.localizations.thisWeek,
                   style: context.headlineLarge?.copyWith(color: context.colors.onPrimary, fontSize: 30),
                 ),
                 SizedBox(height: 25.h),

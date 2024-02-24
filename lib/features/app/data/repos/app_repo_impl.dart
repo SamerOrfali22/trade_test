@@ -25,12 +25,6 @@ class AppRepositoryImpl implements AppRepository {
   @override
   Future<void> changeTheme(ThemeEnum theme) => _themeLocalSource.write('', theme);
 
-  ///this if I want to save the theme locally
-  ///but for weather app I don't want to save it
-  ///I want to be based if Day or Night
-  ///but I kept the ability to change the theme to see both
-  // @override
-  // Stream<ThemeEnum> observeTheme() => _themeLocalSource.reader('').mapNullTo(() => ThemeEnum.themeBasedOnDay);
   @override
-  Stream<ThemeEnum> observeTheme() => Stream.value(ThemeEnum.themeBasedOnDay);
+  Stream<ThemeEnum> observeTheme() => _themeLocalSource.reader('').mapNullTo(() => ThemeEnum.themeBasedOnDay);
 }

@@ -31,5 +31,10 @@
   "total": "المجموع : {total}",
   "total_discount": "مجموع الخصم : {totalDiscount}",
   "total_products": "عدد المنتجات : {totalProducts}",
-  "total_quantity": "الكمية الكلية : {totalQuantity}"
+  "total_quantity": "الكمية الكلية : {totalQuantity}",
+  "today": "اليوم",
+  "search": "بحث",
+  "thisWeek": "هذا الاسبوع",
+  "nextForecast": "توقعات المناخ القادمة",
+  "locateMe": "موقعي"
 }

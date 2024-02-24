@@ -20,6 +20,8 @@ class WeatherHeaderWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: EdgeInsetsDirectional.only(end: 20.0.w),

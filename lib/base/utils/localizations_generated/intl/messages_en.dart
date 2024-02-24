@@ -61,7 +61,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "general_error": MessageLookupByLibrary.simpleMessage(
             "Something went wrong, please retry"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "locateMe": MessageLookupByLibrary.simpleMessage("Locate me"),
         "msg_app_update": m7,
+        "nextForecast": MessageLookupByLibrary.simpleMessage("Next Forecast"),
         "no_internet_connection": MessageLookupByLibrary.simpleMessage(
             "Unable to connect to the internet"),
         "no_internet_connection_message": MessageLookupByLibrary.simpleMessage(
@@ -71,12 +73,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "reset_category":
             MessageLookupByLibrary.simpleMessage("Reset Category"),
         "retry": MessageLookupByLibrary.simpleMessage("retry"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "search_products":
             MessageLookupByLibrary.simpleMessage("Search Products"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "test_crashlytics":
             MessageLookupByLibrary.simpleMessage("Test Crashlytics"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "thisWeek": MessageLookupByLibrary.simpleMessage("This Week"),
+        "today": MessageLookupByLibrary.simpleMessage("Today"),
         "total": m8,
         "total_discount": m9,
         "total_products": m10,

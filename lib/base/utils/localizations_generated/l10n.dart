@@ -349,6 +349,56 @@ class AppLocalizations {
       args: [totalQuantity],
     );
   }
+
+  /// `Today`
+  String get today {
+    return Intl.message(
+      'Today',
+      name: 'today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This Week`
+  String get thisWeek {
+    return Intl.message(
+      'This Week',
+      name: 'thisWeek',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next Forecast`
+  String get nextForecast {
+    return Intl.message(
+      'Next Forecast',
+      name: 'nextForecast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Locate me`
+  String get locateMe {
+    return Intl.message(
+      'Locate me',
+      name: 'locateMe',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

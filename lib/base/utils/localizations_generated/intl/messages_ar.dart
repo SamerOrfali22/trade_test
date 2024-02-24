@@ -61,7 +61,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "general_error": MessageLookupByLibrary.simpleMessage(
             "حدث خطأ ما ، الرجاء المحاولة مرة أخرى"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "locateMe": MessageLookupByLibrary.simpleMessage("موقعي"),
         "msg_app_update": m7,
+        "nextForecast":
+            MessageLookupByLibrary.simpleMessage("توقعات المناخ القادمة"),
         "no_internet_connection": MessageLookupByLibrary.simpleMessage(
             "غير قادر على الاتصال بالانترنت"),
         "no_internet_connection_message": MessageLookupByLibrary.simpleMessage(
@@ -70,12 +73,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "products": MessageLookupByLibrary.simpleMessage("منتجات"),
         "reset_category": MessageLookupByLibrary.simpleMessage("حذف النوع"),
         "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
+        "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "search_products":
             MessageLookupByLibrary.simpleMessage("ابحث عن المنتجات"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "test_crashlytics":
             MessageLookupByLibrary.simpleMessage("اختبار Crashlytics"),
         "theme": MessageLookupByLibrary.simpleMessage("الموضوع"),
+        "thisWeek": MessageLookupByLibrary.simpleMessage("هذا الاسبوع"),
+        "today": MessageLookupByLibrary.simpleMessage("اليوم"),
         "total": m8,
         "total_discount": m9,
         "total_products": m10,

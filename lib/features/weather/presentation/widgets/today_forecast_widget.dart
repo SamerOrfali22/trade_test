@@ -25,7 +25,7 @@ class TodayForecastWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Today',
+                context.localizations.today,
                 style: context.titleLarge?.copyWith(color: context.colors.onPrimary),
               ),
               Text(

@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 import 'package:weather_app/base/presentation/routing/app_router.dart';
 import 'package:weather_app/base/presentation/theme/app_theme.dart';
 import 'package:weather_app/base/utils/ext/build_context_ext.dart';
+import 'package:weather_app/features/app/presentation/viewmodels/app_viewmodel.dart';
 import 'package:weather_app/features/forecast/presentation/viewmodels/forecast_viewmodel.dart';
 
 class NextForecastWidget extends StatelessWidget {
@@ -28,13 +30,19 @@ class NextForecastWidget extends StatelessWidget {
                   Icon(Icons.calendar_month, color: context.colors.onPrimary, size: 25),
                   SizedBox(width: 10.w),
                   Text(
-                    'Next Forecast',
+                    context.localizations.nextForecast,
                     style: context.headlineMedium?.copyWith(fontSize: 16, color: context.colors.onPrimary),
                   ),
                 ],
               ),
             ),
-            Icon(Icons.arrow_circle_right_outlined, color: context.colors.onPrimary, size: 25),
+            Icon(
+              GetIt.I<AppViewmodel>().language.isEnglish
+                  ? Icons.arrow_circle_right_outlined
+                  : Icons.arrow_circle_left_outlined,
+              color: context.colors.onPrimary,
+              size: 25,
+            ),
           ],
         ),
       ),

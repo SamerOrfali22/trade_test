@@ -31,5 +31,10 @@
   "total": "total : {total}",
   "total_discount": "total discount : {totalDiscount}",
   "total_products": "total products : {totalProducts}",
-  "total_quantity": "total quantity : {totalQuantity}"
+  "total_quantity": "total quantity : {totalQuantity}",
+  "today": "Today",
+  "search": "Search",
+  "thisWeek": "This Week",
+  "nextForecast": "Next Forecast",
+  "locateMe": "Locate me"
 }
