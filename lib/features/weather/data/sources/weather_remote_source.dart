@@ -10,6 +10,10 @@ abstract class WeatherRemoteSource {
     required String lat,
     required String lon,
   });
+
+  Future<Result<WeatherResponseModel>> fetchWeatherByCity({
+    required String city,
+  });
 }
 
 @LazySingleton(as: WeatherRemoteSource)
@@ -32,4 +36,17 @@ class WeatherRemoteSourceImpl extends BaseRemoteSource implements WeatherRemoteS
 
   @override
   String get loggerTag => 'WeatherRemoteSource';
+
+  @override
+  Future<Result<WeatherResponseModel>> fetchWeatherByCity({required String city}) {
+    return request(
+      method: HttpMethod.GET,
+      endpoint: EndPoints.weather,
+      queryParameters: {
+        'q': city,
+        'units': 'metric',
+      },
+      serializer: (json) => WeatherResponseModel.fromJson(json),
+    );
+  }
 }

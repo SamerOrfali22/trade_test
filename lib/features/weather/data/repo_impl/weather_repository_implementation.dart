@@ -13,4 +13,8 @@ class WeatherRepositoryImpl implements WeatherRepository {
   @override
   Future<Result<WeatherResponseModel>> fetchWeatherByCoord({required String lat, required String lon}) =>
       _weatherRemoteSource.fetchWeatherByCoord(lat: lat, lon: lon);
+
+  @override
+  Future<Result<WeatherResponseModel>> fetchWeatherByCity({required String city}) =>
+      _weatherRemoteSource.fetchWeatherByCity(city: city);
 }

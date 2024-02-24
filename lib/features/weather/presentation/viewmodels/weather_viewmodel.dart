@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:dart_kit/dart_kit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
@@ -20,21 +22,45 @@ class WeatherViewmodel extends BaseViewmodel {
 
   final selectedLat = RxDouble(25.2582);
   final selectedLon = RxDouble(55.3047);
+  final RxBool showLocateMeButton = RxBool(false);
 
   @override
   void onInit() {
     super.onInit();
-    getLocation().then((value) => fetchWeather());
+    fetchCurrentLocation();
   }
 
   late final futureWeatherModel = RxResultFuture<WeatherResponseModel>();
 
-  void fetchWeather() => futureWeatherModel(
-        _weatherRepository.fetchWeatherByCoord(
-          lat: selectedLat.value.toString(),
-          lon: selectedLon.value.toString(),
-        ),
+  void fetchCurrentLocation() {
+    searchController.clear();
+    showLocateMeButton(false);
+    getLocation().then((value) => fetchWeatherByCoord());
+  }
+
+  void fetchWeatherByCoord() => futureWeatherModel(_weatherRepository
+      .fetchWeatherByCoord(
+        lat: selectedLat.value.toString(),
+        lon: selectedLon.value.toString(),
+      )
+      .doOnDataResult((result) => fetchForecast()));
+
+  void fetchWeatherByCity({required String city}) => futureWeatherModel(
+        _weatherRepository.fetchWeatherByCity(city: city).doOnDataResult(
+          (result) {
+            changeCoord(lat: result.value.coord?.lat, lon: result.value.coord?.lon);
+            fetchForecast();
+            searchController.clear();
+            showLocateMeButton(true);
+          },
+        ).doOnErrorResult((value) => showLocateMeButton(false)),
       );
+
+  TextEditingController searchController = TextEditingController();
+
+  void onSubmitSearch() {
+    fetchWeatherByCity(city: searchController.text);
+  }
 
   Future<void> getLocation() async {
     LocationPermission permission = await Geolocator.checkPermission();
@@ -50,10 +76,20 @@ class WeatherViewmodel extends BaseViewmodel {
     if (permission == LocationPermission.whileInUse || permission == LocationPermission.always) {
       Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       log('Latitude: ${position.latitude}, Longitude: ${position.longitude}');
-      selectedLat.value = position.latitude;
-      selectedLon.value = position.longitude;
+      changeCoord(lat: position.latitude, lon: position.longitude);
     }
   }
+
+  void changeCoord({required double? lat, required double? lon}) {
+    if (lat == null || lon == null) return;
+    selectedLon.value = lon;
+    selectedLat.value = lat;
+  }
+
+  void fetchForecast() => forecastViewmodel.fetchForecast(
+        lat: selectedLat.value.toString(),
+        lon: selectedLon.value.toString(),
+      );
 
   @override
   void dispose() {

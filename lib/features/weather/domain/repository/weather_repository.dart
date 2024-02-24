@@ -6,4 +6,8 @@ abstract class WeatherRepository {
     required String lat,
     required String lon,
   });
+
+  Future<Result<WeatherResponseModel>> fetchWeatherByCity({
+    required String city,
+  });
 }

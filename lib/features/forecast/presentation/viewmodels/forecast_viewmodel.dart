@@ -13,8 +13,6 @@ class ForecastViewmodel extends BaseViewmodel {
 
   final ForecastRepository _forecastRepository = GetIt.I<ForecastRepository>();
 
-  final selectedLat = RxDouble(25.2582);
-  final selectedLon = RxDouble(55.3047);
   Rxn<CityModel> city = Rxn<CityModel>();
 
   RxList<ForecastModel> todayList = <ForecastModel>[].obs;
@@ -23,15 +21,10 @@ class ForecastViewmodel extends BaseViewmodel {
   @override
   void onInit() {
     super.onInit();
-    fetchForecast();
   }
 
-  void fetchForecast() => _forecastRepository
-          .fetchForecastByCoord(
-        lat: selectedLat.value.toString(),
-        lon: selectedLon.value.toString(),
-      )
-          .doOnDataResult(
+  void fetchForecast({required String lat, required String lon}) =>
+      _forecastRepository.fetchForecastByCoord(lat: lat, lon: lon).doOnDataResult(
         (result) {
           city.value = result.value.city;
           addToList(result.value.list ?? []);
@@ -39,6 +32,8 @@ class ForecastViewmodel extends BaseViewmodel {
       );
 
   void addToList(List<ForecastModel> list) {
+    todayList.clear();
+    futureDailyList.clear();
     list.forEach((element) {
       //today
       if (element.dtTxt?.weekday == DateTime.now().weekday) {

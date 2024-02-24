@@ -24,10 +24,12 @@ class Loader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SpinKitThreeBounce(
           color: color ?? context.colors.onPrimary,
-          size: size ?? 24.0.r,
+          size: size ?? 28.0.r,
         ),
       ],
     );

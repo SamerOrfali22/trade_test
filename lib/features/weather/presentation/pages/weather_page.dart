@@ -8,9 +8,12 @@ import 'package:weather_app/base/presentation/widgets/rx/base_result_future_buil
 import 'package:weather_app/features/app/presentation/app_background_widget.dart';
 import 'package:weather_app/features/app/presentation/viewmodels/app_viewmodel.dart';
 import 'package:weather_app/features/weather/presentation/viewmodels/weather_viewmodel.dart';
+import 'package:weather_app/features/weather/presentation/widgets/city_not_found_widget.dart';
 import 'package:weather_app/features/weather/presentation/widgets/next_forecast_widget.dart';
 import 'package:weather_app/features/weather/presentation/widgets/today_forecast_widget.dart';
 import 'package:weather_app/features/weather/presentation/widgets/weather_header_widget.dart';
+
+import '../widgets/search_widget.dart';
 
 @RoutePage()
 class WeatherPage extends StatefulWidget {
@@ -28,28 +31,36 @@ class _WeatherPageState extends BasePage<WeatherPage, WeatherViewmodel> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppBackgroundWidget(
-        child: BaseResultFutureBuilder(
-          future: viewmodel.futureWeatherModel,
-          onRetry: () => viewmodel.fetchWeather(),
-          onSuccess: (data) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height: 100.h),
-                Obx(
-                  () => WeatherHeaderWidget(
-                    model: data,
-                    cityName: viewmodel.forecastViewmodel.city.value?.name,
-                  ),
-                ),
-                SizedBox(height: 30.h),
-                TodayForecastWidget(viewmodel: viewmodel.forecastViewmodel),
-                SizedBox(height: 30.h),
-                NextForecastWidget(viewmodel: viewmodel.forecastViewmodel),
-              ],
-            );
-          },
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 40.h),
+              SearchWidget(viewmodel: viewmodel),
+              SizedBox(height: 40.h),
+              BaseResultFutureBuilder(
+                future: viewmodel.futureWeatherModel,
+                onRetry: () => viewmodel.fetchWeatherByCoord(),
+                onError: (_) => CityNotFoundWidget(viewmodel: viewmodel),
+                onSuccess: (data) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Obx(
+                        () => WeatherHeaderWidget(
+                          model: data,
+                          cityName: viewmodel.forecastViewmodel.city.value?.name,
+                        ),
+                      ),
+                      SizedBox(height: 30.h),
+                      TodayForecastWidget(viewmodel: viewmodel.forecastViewmodel),
+                      SizedBox(height: 30.h),
+                      NextForecastWidget(viewmodel: viewmodel.forecastViewmodel),
+                    ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
