@@ -56,7 +56,7 @@ enum SnackBarType {
         break;
 
       case SnackBarType.Success:
-        backgroundColor = context.colors.onSecondaryContainer;
+        backgroundColor = context.colors.onPrimary;
         break;
 
       case SnackBarType.Error:

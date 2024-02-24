@@ -15,7 +15,7 @@ class WeatherHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: ShapeDecoration(
-        color: Color(0x332C333F),
+        color: context.colors.onSecondaryContainer,
         shape: RoundedRectangleBorder(
           side: BorderSide(width: 0.50, color: Colors.white.withOpacity(0.5)),
           borderRadius: BorderRadius.circular(15),

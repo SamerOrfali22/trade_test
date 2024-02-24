@@ -60,9 +60,6 @@ class AppColors extends ColorScheme {
   static AppColors _lightColorScheme() => const AppColors(
         brightness: Brightness.light,
         primary: Color(0xFF006879),
-        // onPrimary: Color(0xFF003640),
-        // primaryContainer: Color(0xFF004E5B),
-        // onPrimaryContainer: Color(0xFFA9EDFF),
 
         onPrimary: Color(0xFFFFFFFF),
         primaryContainer: Color(0xFFA9EDFF),
@@ -71,7 +68,7 @@ class AppColors extends ColorScheme {
         secondary: Color(0xFF286C2A),
         onSecondary: Color(0xFFFFFFFF),
         secondaryContainer: Color(0xFFABF4A2),
-        onSecondaryContainer: Color(0xFF002203),
+        onSecondaryContainer: Color(0x332C333F),
         //
         tertiary: Color(0xFF006783),
         onTertiary: Color(0xFF003546),
@@ -122,7 +119,7 @@ class AppColors extends ColorScheme {
         secondary: Color(0xFF90D889),
         onSecondary: Color(0xFF003909),
         secondaryContainer: Color(0xFF095314),
-        onSecondaryContainer: Color(0xFFABF4A2),
+        onSecondaryContainer: Color(0x332C333F),
         //
         tertiary: Color(0xFF64D3FF),
         onTertiary: Color(0xFF003546),
