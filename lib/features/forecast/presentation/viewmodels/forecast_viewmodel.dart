@@ -41,7 +41,7 @@ class ForecastViewmodel extends BaseViewmodel {
   void addToList(List<ForecastModel> list) {
     list.forEach((element) {
       //today
-      if (element.dtTxt?.difference(DateTime.now()).inDays == 0) {
+      if (element.dtTxt?.weekday == DateTime.now().weekday) {
         todayList.add(element);
       }
       //future

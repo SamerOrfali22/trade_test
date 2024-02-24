@@ -60,9 +60,13 @@ class AppColors extends ColorScheme {
   static AppColors _lightColorScheme() => const AppColors(
         brightness: Brightness.light,
         primary: Color(0xFF006879),
-        onPrimary: Color(0xFF003640),
-        primaryContainer: Color(0xFF004E5B),
-        onPrimaryContainer: Color(0xFFA9EDFF),
+        // onPrimary: Color(0xFF003640),
+        // primaryContainer: Color(0xFF004E5B),
+        // onPrimaryContainer: Color(0xFFA9EDFF),
+
+        onPrimary: Color(0xFFFFFFFF),
+        primaryContainer: Color(0xFFA9EDFF),
+        onPrimaryContainer: Color(0xFF001F26),
         //
         secondary: Color(0xFF286C2A),
         onSecondary: Color(0xFFFFFFFF),

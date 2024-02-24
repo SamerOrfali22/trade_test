@@ -39,20 +39,20 @@ class TodayForecastWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20.h),
+          SizedBox(height: 30.h),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Obx(() => Row(
                   children: viewmodel.todayList
                       .map(
                         (element) => Padding(
-                          padding: EdgeInsetsDirectional.only(end: 20.w),
+                          padding: EdgeInsetsDirectional.only(end: 30.w),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               if (element.main?.temp.isNotNull ?? false)
                                 Padding(
-                                  padding: EdgeInsets.only(bottom: 8.h),
+                                  padding: EdgeInsets.only(bottom: 15.h),
                                   child: Text(
                                     "${element.main!.temp!.floor()}°",
                                     style: context.titleLarge?.copyWith(color: context.colors.onPrimary),
@@ -60,7 +60,7 @@ class TodayForecastWidget extends StatelessWidget {
                                 ),
                               if (element.weather?.first.isNotNull ?? false)
                                 Padding(
-                                  padding: EdgeInsets.only(bottom: 8.h),
+                                  padding: EdgeInsets.only(bottom: 15.h),
                                   child: SvgPicture.asset(
                                     element.weather!.first.main.icon,
                                     width: 25,
