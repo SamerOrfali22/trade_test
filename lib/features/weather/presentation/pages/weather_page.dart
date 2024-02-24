@@ -46,7 +46,7 @@ class _WeatherPageState extends BasePage<WeatherPage, WeatherViewmodel> {
                 SizedBox(height: 30.h),
                 TodayForecastWidget(viewmodel: viewmodel.forecastViewmodel),
                 SizedBox(height: 30.h),
-                NextForecastWidget(),
+                NextForecastWidget(viewmodel: viewmodel.forecastViewmodel),
               ],
             );
           },

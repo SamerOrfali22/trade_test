@@ -2,6 +2,7 @@ import 'package:dart_kit/dart_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:weather_app/base/presentation/theme/app_theme.dart';
 import 'package:weather_app/base/utils/ext/build_context_ext.dart';
 import 'package:weather_app/features/weather/data/models/weather_response_model.dart';
 import 'package:weather_app/gen/assets.gen.dart';
@@ -14,13 +15,7 @@ class WeatherHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: ShapeDecoration(
-        color: context.colors.onSecondaryContainer,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 0.50, color: Colors.white.withOpacity(0.5)),
-          borderRadius: BorderRadius.circular(15),
-        ),
-      ),
+      decoration: context.theme.boxDecoration,
       margin: EdgeInsets.symmetric(horizontal: 16),
       padding: EdgeInsets.symmetric(vertical: 16),
       child: Column(

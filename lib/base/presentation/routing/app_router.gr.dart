@@ -16,9 +16,13 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     ForecastRoute.name: (routeData) {
+      final args = routeData.argsAs<ForecastRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ForecastPage(),
+        child: ForecastPage(
+          key: args.key,
+          viewmodel: args.viewmodel,
+        ),
       );
     },
     WeatherRoute.name: (routeData) {
@@ -32,16 +36,39 @@ abstract class _$AppRouter extends RootStackRouter {
 
 /// generated route for
 /// [ForecastPage]
-class ForecastRoute extends PageRouteInfo<void> {
-  const ForecastRoute({List<PageRouteInfo>? children})
-      : super(
+class ForecastRoute extends PageRouteInfo<ForecastRouteArgs> {
+  ForecastRoute({
+    Key? key,
+    required ForecastViewmodel viewmodel,
+    List<PageRouteInfo>? children,
+  }) : super(
           ForecastRoute.name,
+          args: ForecastRouteArgs(
+            key: key,
+            viewmodel: viewmodel,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ForecastRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ForecastRouteArgs> page = PageInfo<ForecastRouteArgs>(name);
+}
+
+class ForecastRouteArgs {
+  const ForecastRouteArgs({
+    this.key,
+    required this.viewmodel,
+  });
+
+  final Key? key;
+
+  final ForecastViewmodel viewmodel;
+
+  @override
+  String toString() {
+    return 'ForecastRouteArgs{key: $key, viewmodel: $viewmodel}';
+  }
 }
 
 /// generated route for

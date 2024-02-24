@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weather_app/features/app/presentation/viewmodels/app_viewmodel.dart';
 import 'package:weather_app/gen/assets.gen.dart';
@@ -13,6 +14,8 @@ class AppBackgroundWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: context.width,
+      height: context.height,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(

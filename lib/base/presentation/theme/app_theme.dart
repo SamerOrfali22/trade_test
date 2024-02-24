@@ -156,4 +156,12 @@ extension ThemeExtensions on ThemeData {
   AppColors get colors => brightness == Brightness.light ? _lightColors : _darkColors;
 
   AppStyles get textStyles => _styles;
+
+  Decoration get boxDecoration => ShapeDecoration(
+        color: colors.onSecondaryContainer,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 0.50, color: Colors.white.withOpacity(0.5)),
+          borderRadius: BorderRadius.circular(15),
+        ),
+      );
 }
