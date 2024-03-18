@@ -12,7 +12,7 @@ part of 'app_exception.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AppExceptionModel _$AppExceptionModelFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
@@ -30,16 +30,13 @@ AppExceptionModel _$AppExceptionModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppExceptionModel {
   int get status => throw _privateConstructorUsedError;
-
   String get message => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int status, String message) general,
     required TResult Function(int status, String message) conflict,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int status, String message)? general,
@@ -53,14 +50,12 @@ mixin _$AppExceptionModel {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppGeneralException value) general,
     required TResult Function(AppConflictException value) conflict,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AppGeneralException value)? general,
@@ -74,9 +69,7 @@ mixin _$AppExceptionModel {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $AppExceptionModelCopyWith<AppExceptionModel> get copyWith => throw _privateConstructorUsedError;
 }
@@ -85,7 +78,6 @@ mixin _$AppExceptionModel {
 abstract class $AppExceptionModelCopyWith<$Res> {
   factory $AppExceptionModelCopyWith(AppExceptionModel value, $Res Function(AppExceptionModel) then) =
       _$AppExceptionModelCopyWithImpl<$Res, AppExceptionModel>;
-
   @useResult
   $Res call({int status, String message});
 }
@@ -97,7 +89,6 @@ class _$AppExceptionModelCopyWithImpl<$Res, $Val extends AppExceptionModel>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -125,7 +116,6 @@ abstract class _$$AppGeneralExceptionImplCopyWith<$Res> implements $AppException
   factory _$$AppGeneralExceptionImplCopyWith(
           _$AppGeneralExceptionImpl value, $Res Function(_$AppGeneralExceptionImpl) then) =
       __$$AppGeneralExceptionImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int status, String message});
@@ -181,7 +171,7 @@ class _$AppGeneralExceptionImpl extends AppGeneralException {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppGeneralExceptionImpl &&
@@ -271,17 +261,14 @@ class _$AppGeneralExceptionImpl extends AppGeneralException {
 
 abstract class AppGeneralException extends AppExceptionModel implements TranslatableException {
   factory AppGeneralException({required final int status, required final String message}) = _$AppGeneralExceptionImpl;
-
   AppGeneralException._() : super._();
 
   factory AppGeneralException.fromJson(Map<String, dynamic> json) = _$AppGeneralExceptionImpl.fromJson;
 
   @override
   int get status;
-
   @override
   String get message;
-
   @override
   @JsonKey(ignore: true)
   _$$AppGeneralExceptionImplCopyWith<_$AppGeneralExceptionImpl> get copyWith => throw _privateConstructorUsedError;
@@ -292,7 +279,6 @@ abstract class _$$AppConflictExceptionImplCopyWith<$Res> implements $AppExceptio
   factory _$$AppConflictExceptionImplCopyWith(
           _$AppConflictExceptionImpl value, $Res Function(_$AppConflictExceptionImpl) then) =
       __$$AppConflictExceptionImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int status, String message});
@@ -348,7 +334,7 @@ class _$AppConflictExceptionImpl extends AppConflictException {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppConflictExceptionImpl &&
@@ -438,17 +424,14 @@ class _$AppConflictExceptionImpl extends AppConflictException {
 
 abstract class AppConflictException extends AppExceptionModel implements TranslatableException {
   factory AppConflictException({required final int status, required final String message}) = _$AppConflictExceptionImpl;
-
   AppConflictException._() : super._();
 
   factory AppConflictException.fromJson(Map<String, dynamic> json) = _$AppConflictExceptionImpl.fromJson;
 
   @override
   int get status;
-
   @override
   String get message;
-
   @override
   @JsonKey(ignore: true)
   _$$AppConflictExceptionImplCopyWith<_$AppConflictExceptionImpl> get copyWith => throw _privateConstructorUsedError;

@@ -12,7 +12,7 @@ part of 'weather_response_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 WeatherResponseModel _$WeatherResponseModelFromJson(Map<String, dynamic> json) {
   return _WeatherResponseModel.fromJson(json);
@@ -26,25 +26,15 @@ mixin _$WeatherResponseModel {
   List<WeatherConditionModel>? get weather => throw _privateConstructorUsedError;
 
   String? get base => throw _privateConstructorUsedError;
-
   WeatherInfoModel? get main => throw _privateConstructorUsedError;
-
   int? get visibility => throw _privateConstructorUsedError;
-
   WindModel? get wind => throw _privateConstructorUsedError;
-
   CloudsModel? get clouds => throw _privateConstructorUsedError;
-
   int? get dt => throw _privateConstructorUsedError;
-
   SunInfoModel? get sys => throw _privateConstructorUsedError;
-
   int? get timezone => throw _privateConstructorUsedError;
-
   int? get id => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
-
   int? get cod => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -330,7 +320,7 @@ class _$WeatherResponseModelImpl implements _WeatherResponseModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WeatherResponseModelImpl &&
@@ -398,28 +388,20 @@ abstract class _WeatherResponseModel implements WeatherResponseModel {
 
   @override
   WeatherInfoModel? get main;
-
   @override
   int? get visibility;
-
   @override
   WindModel? get wind;
-
   @override
   CloudsModel? get clouds;
-
   @override
   int? get dt;
-
   @override
   SunInfoModel? get sys;
-
   @override
   int? get timezone;
-
   @override
   int? get id;
-
   @override
   String? get name;
 

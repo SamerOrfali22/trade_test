@@ -12,7 +12,7 @@ part of 'forecast_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ForecastModel _$ForecastModelFromJson(Map<String, dynamic> json) {
   return _ForcastModel.fromJson(json);
@@ -28,13 +28,9 @@ mixin _$ForecastModel {
   List<WeatherConditionModel>? get weather => throw _privateConstructorUsedError;
 
   CloudsModel? get clouds => throw _privateConstructorUsedError;
-
   WindModel? get wind => throw _privateConstructorUsedError;
-
   int? get visibility => throw _privateConstructorUsedError;
-
   double? get pop => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'dt_txt', fromJson: _dateTimeFromJson)
   DateTime? get dtTxt => throw _privateConstructorUsedError;
 
@@ -196,18 +192,18 @@ class __$$ForcastModelImplCopyWithImpl<$Res> extends _$ForecastModelCopyWithImpl
 /// @nodoc
 @JsonSerializable()
 class _$ForcastModelImpl implements _ForcastModel {
-  const _$ForcastModelImpl(
-      {this.dt,
-      this.main,
-      @JsonKey(defaultValue: []) final List<WeatherConditionModel>? weather,
-      this.clouds,
-      this.wind,
-      this.visibility,
-      this.pop,
-      @JsonKey(name: 'dt_txt', fromJson: _dateTimeFromJson) this.dtTxt})
+  const _$ForcastModelImpl({this.dt,
+    this.main,
+    @JsonKey(defaultValue: []) final List<WeatherConditionModel>? weather,
+    this.clouds,
+    this.wind,
+    this.visibility,
+    this.pop,
+    @JsonKey(name: 'dt_txt', fromJson: _dateTimeFromJson) this.dtTxt})
       : _weather = weather;
 
-  factory _$ForcastModelImpl.fromJson(Map<String, dynamic> json) => _$$ForcastModelImplFromJson(json);
+  factory _$ForcastModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ForcastModelImplFromJson(json);
 
   @override
   final int? dt;
@@ -243,7 +239,7 @@ class _$ForcastModelImpl implements _ForcastModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ForcastModelImpl &&
@@ -301,13 +297,10 @@ abstract class _ForcastModel implements ForecastModel {
 
   @override
   CloudsModel? get clouds;
-
   @override
   WindModel? get wind;
-
   @override
   int? get visibility;
-
   @override
   double? get pop;
 

@@ -12,7 +12,7 @@ part of 'network_exceptions.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 NetworkException _$NetworkExceptionFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
@@ -71,7 +71,6 @@ mixin _$NetworkException {
     required TResult Function(int? code, String? error) defaultError,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(dynamic body)? unauthorizedRequest,
@@ -109,7 +108,6 @@ mixin _$NetworkException {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UnauthorizedRequest value) unauthorizedRequest,
@@ -128,7 +126,6 @@ mixin _$NetworkException {
     required TResult Function(DefaultError value) defaultError,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(UnauthorizedRequest value)? unauthorizedRequest,
@@ -166,7 +163,6 @@ mixin _$NetworkException {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -180,10 +176,9 @@ abstract class $NetworkExceptionCopyWith<$Res> {
 class _$NetworkExceptionCopyWithImpl<$Res, $Val extends NetworkException> implements $NetworkExceptionCopyWith<$Res> {
   _$NetworkExceptionCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
+// ignore: unused_field
   final $Val _value;
-
-  // ignore: unused_field
+// ignore: unused_field
   final $Res Function($Val) _then;
 }
 
@@ -192,7 +187,6 @@ abstract class _$$UnauthorizedRequestImplCopyWith<$Res> {
   factory _$$UnauthorizedRequestImplCopyWith(
           _$UnauthorizedRequestImpl value, $Res Function(_$UnauthorizedRequestImpl) then) =
       __$$UnauthorizedRequestImplCopyWithImpl<$Res>;
-
   @useResult
   $Res call({dynamic body});
 }
@@ -237,7 +231,7 @@ class _$UnauthorizedRequestImpl extends UnauthorizedRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UnauthorizedRequestImpl &&
@@ -398,13 +392,11 @@ class _$UnauthorizedRequestImpl extends UnauthorizedRequest {
 
 abstract class UnauthorizedRequest extends NetworkException implements TranslatableException {
   const factory UnauthorizedRequest(final dynamic body) = _$UnauthorizedRequestImpl;
-
   const UnauthorizedRequest._() : super._();
 
   factory UnauthorizedRequest.fromJson(Map<String, dynamic> json) = _$UnauthorizedRequestImpl.fromJson;
 
   dynamic get body;
-
   @JsonKey(ignore: true)
   _$$UnauthorizedRequestImplCopyWith<_$UnauthorizedRequestImpl> get copyWith => throw _privateConstructorUsedError;
 }
@@ -439,7 +431,7 @@ class _$BadRequestImpl extends BadRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$BadRequestImpl);
   }
 
@@ -591,7 +583,6 @@ class _$BadRequestImpl extends BadRequest {
 
 abstract class BadRequest extends NetworkException implements TranslatableException {
   const factory BadRequest() = _$BadRequestImpl;
-
   const BadRequest._() : super._();
 
   factory BadRequest.fromJson(Map<String, dynamic> json) = _$BadRequestImpl.fromJson;
@@ -601,7 +592,6 @@ abstract class BadRequest extends NetworkException implements TranslatableExcept
 abstract class _$$NotFoundImplCopyWith<$Res> {
   factory _$$NotFoundImplCopyWith(_$NotFoundImpl value, $Res Function(_$NotFoundImpl) then) =
       __$$NotFoundImplCopyWithImpl<$Res>;
-
   @useResult
   $Res call({String reason});
 }
@@ -646,7 +636,7 @@ class _$NotFoundImpl extends NotFound {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotFoundImpl &&
@@ -807,13 +797,11 @@ class _$NotFoundImpl extends NotFound {
 
 abstract class NotFound extends NetworkException implements TranslatableException {
   const factory NotFound(final String reason) = _$NotFoundImpl;
-
   const NotFound._() : super._();
 
   factory NotFound.fromJson(Map<String, dynamic> json) = _$NotFoundImpl.fromJson;
 
   String get reason;
-
   @JsonKey(ignore: true)
   _$$NotFoundImplCopyWith<_$NotFoundImpl> get copyWith => throw _privateConstructorUsedError;
 }
@@ -849,7 +837,7 @@ class _$MethodNotAllowedImpl extends MethodNotAllowed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$MethodNotAllowedImpl);
   }
 
@@ -1001,7 +989,6 @@ class _$MethodNotAllowedImpl extends MethodNotAllowed {
 
 abstract class MethodNotAllowed extends NetworkException implements TranslatableException {
   const factory MethodNotAllowed() = _$MethodNotAllowedImpl;
-
   const MethodNotAllowed._() : super._();
 
   factory MethodNotAllowed.fromJson(Map<String, dynamic> json) = _$MethodNotAllowedImpl.fromJson;
@@ -1038,7 +1025,7 @@ class _$NotAcceptableImpl extends NotAcceptable {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$NotAcceptableImpl);
   }
 
@@ -1190,7 +1177,6 @@ class _$NotAcceptableImpl extends NotAcceptable {
 
 abstract class NotAcceptable extends NetworkException implements TranslatableException {
   const factory NotAcceptable() = _$NotAcceptableImpl;
-
   const NotAcceptable._() : super._();
 
   factory NotAcceptable.fromJson(Map<String, dynamic> json) = _$NotAcceptableImpl.fromJson;
@@ -1226,7 +1212,7 @@ class _$ConflictImpl extends Conflict {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$ConflictImpl);
   }
 
@@ -1378,7 +1364,6 @@ class _$ConflictImpl extends Conflict {
 
 abstract class Conflict extends NetworkException implements TranslatableException {
   const factory Conflict() = _$ConflictImpl;
-
   const Conflict._() : super._();
 
   factory Conflict.fromJson(Map<String, dynamic> json) = _$ConflictImpl.fromJson;
@@ -1418,7 +1403,7 @@ class _$InternalServerErrorImpl extends InternalServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$InternalServerErrorImpl);
   }
 
@@ -1570,7 +1555,6 @@ class _$InternalServerErrorImpl extends InternalServerError {
 
 abstract class InternalServerError extends NetworkException implements TranslatableException {
   const factory InternalServerError() = _$InternalServerErrorImpl;
-
   const InternalServerError._() : super._();
 
   factory InternalServerError.fromJson(Map<String, dynamic> json) = _$InternalServerErrorImpl.fromJson;
@@ -1607,7 +1591,7 @@ class _$NotImplementedImpl extends NotImplemented {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$NotImplementedImpl);
   }
 
@@ -1759,7 +1743,6 @@ class _$NotImplementedImpl extends NotImplemented {
 
 abstract class NotImplemented extends NetworkException implements TranslatableException {
   const factory NotImplemented() = _$NotImplementedImpl;
-
   const NotImplemented._() : super._();
 
   factory NotImplemented.fromJson(Map<String, dynamic> json) = _$NotImplementedImpl.fromJson;
@@ -1798,7 +1781,7 @@ class _$ServiceUnavailableImpl extends ServiceUnavailable {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$ServiceUnavailableImpl);
   }
 
@@ -1950,7 +1933,6 @@ class _$ServiceUnavailableImpl extends ServiceUnavailable {
 
 abstract class ServiceUnavailable extends NetworkException implements TranslatableException {
   const factory ServiceUnavailable() = _$ServiceUnavailableImpl;
-
   const ServiceUnavailable._() : super._();
 
   factory ServiceUnavailable.fromJson(Map<String, dynamic> json) = _$ServiceUnavailableImpl.fromJson;
@@ -1990,7 +1972,7 @@ class _$NoInternetConnectionImpl extends NoInternetConnection {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$NoInternetConnectionImpl);
   }
 
@@ -2142,7 +2124,6 @@ class _$NoInternetConnectionImpl extends NoInternetConnection {
 
 abstract class NoInternetConnection extends NetworkException implements TranslatableException {
   const factory NoInternetConnection() = _$NoInternetConnectionImpl;
-
   const NoInternetConnection._() : super._();
 
   factory NoInternetConnection.fromJson(Map<String, dynamic> json) = _$NoInternetConnectionImpl.fromJson;
@@ -2183,7 +2164,7 @@ class _$NetworkFormatExceptionImpl extends NetworkFormatException {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$NetworkFormatExceptionImpl);
   }
 
@@ -2335,7 +2316,6 @@ class _$NetworkFormatExceptionImpl extends NetworkFormatException {
 
 abstract class NetworkFormatException extends NetworkException implements TranslatableException {
   const factory NetworkFormatException() = _$NetworkFormatExceptionImpl;
-
   const NetworkFormatException._() : super._();
 
   factory NetworkFormatException.fromJson(Map<String, dynamic> json) = _$NetworkFormatExceptionImpl.fromJson;
@@ -2372,7 +2352,7 @@ class _$UnableToProcessImpl extends UnableToProcess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$UnableToProcessImpl);
   }
 
@@ -2524,7 +2504,6 @@ class _$UnableToProcessImpl extends UnableToProcess {
 
 abstract class UnableToProcess extends NetworkException implements TranslatableException {
   const factory UnableToProcess() = _$UnableToProcessImpl;
-
   const UnableToProcess._() : super._();
 
   factory UnableToProcess.fromJson(Map<String, dynamic> json) = _$UnableToProcessImpl.fromJson;
@@ -2561,7 +2540,7 @@ class _$UnexpectedErrorImpl extends UnexpectedError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$UnexpectedErrorImpl);
   }
 
@@ -2713,7 +2692,6 @@ class _$UnexpectedErrorImpl extends UnexpectedError {
 
 abstract class UnexpectedError extends NetworkException implements TranslatableException {
   const factory UnexpectedError() = _$UnexpectedErrorImpl;
-
   const UnexpectedError._() : super._();
 
   factory UnexpectedError.fromJson(Map<String, dynamic> json) = _$UnexpectedErrorImpl.fromJson;
@@ -2723,7 +2701,6 @@ abstract class UnexpectedError extends NetworkException implements TranslatableE
 abstract class _$$DefaultErrorImplCopyWith<$Res> {
   factory _$$DefaultErrorImplCopyWith(_$DefaultErrorImpl value, $Res Function(_$DefaultErrorImpl) then) =
       __$$DefaultErrorImplCopyWithImpl<$Res>;
-
   @useResult
   $Res call({int? code, String? error});
 }
@@ -2776,7 +2753,7 @@ class _$DefaultErrorImpl extends DefaultError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DefaultErrorImpl &&
@@ -2938,15 +2915,12 @@ class _$DefaultErrorImpl extends DefaultError {
 
 abstract class DefaultError extends NetworkException implements TranslatableException {
   const factory DefaultError(final int? code, final String? error) = _$DefaultErrorImpl;
-
   const DefaultError._() : super._();
 
   factory DefaultError.fromJson(Map<String, dynamic> json) = _$DefaultErrorImpl.fromJson;
 
   int? get code;
-
   String? get error;
-
   @JsonKey(ignore: true)
   _$$DefaultErrorImplCopyWith<_$DefaultErrorImpl> get copyWith => throw _privateConstructorUsedError;
 }
