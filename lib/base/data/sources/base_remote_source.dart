@@ -4,6 +4,7 @@ import 'package:dart_kit/dart_kit.dart';
 import 'package:dio/dio.dart';
 import 'package:weather_app/base/data/networking/http_client.dart';
 import 'package:weather_app/base/data/sources/token_type.dart';
+import 'package:weather_app/features/search/data/models/pagination_model.dart';
 
 /// Abstract base class for a remote data source, which is responsible for making HTTP requests
 /// to a server and handling the responses.
@@ -107,6 +108,48 @@ abstract class BaseRemoteSource with Loggable {
         onReceiveProgress: onReceiveProgress,
         onSendProgress: onSendProgress,
         queryParameters: queryParameters,
+        tokenType: tokenType,
+        withAuth: withAuth,
+        customErrorHandler: customErrorHandler,
+        baseUrl: baseUrl,
+      );
+
+  Future<Result<PaginationModel<T>>> paginatedRequest<T>({
+    required HttpMethod method,
+    required String endpoint,
+    required T Function(Map<String, dynamic> json) serializer,
+    required int page,
+    int? pageSize,
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+    bool withAuth = true,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+    CancelToken? cancelToken,
+    TokenType tokenType = TokenType.Bearer,
+    HttpContent contentType = HttpContent.Form,
+    String? Function(Map<String, dynamic>)? customErrorHandler,
+    String? baseUrl,
+  }) =>
+      _baseRequest<PaginationModel<T>>(
+        method: method,
+        endpoint: endpoint,
+        serializer: (json) => PaginationModel<T>.fromJson(
+          json as Map<String, dynamic>,
+          (json) => serializer(json as Map<String, dynamic>),
+        ),
+        cancelToken: cancelToken,
+        contentType: contentType,
+        data: data,
+        headers: headers,
+        onReceiveProgress: onReceiveProgress,
+        onSendProgress: onSendProgress,
+        queryParameters: {
+          // 'page': page,
+          // 'page_size': pageSize ?? 10,
+          ...?queryParameters,
+        },
         tokenType: tokenType,
         withAuth: withAuth,
         customErrorHandler: customErrorHandler,

@@ -138,7 +138,7 @@ class AppColors extends ColorScheme {
         onSurface: Color(0xFFCAC5CA),
         surfaceVariant: Color(0xFF3F484B),
         onSurfaceVariant: Color(0xFFBFC8CB),
-        outline: Color(0xFF899295),
+        outline: Color(0xFF75777F),
         //
         changeRequest: Color(0xFFF5DD00),
         onChangeRequest: Color(0xFF1C1B1E),

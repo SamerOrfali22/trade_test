@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:dart_kit/dart_kit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -14,8 +12,8 @@ class LanguageInterceptor extends Interceptor with Loggable {
 
   late final appViewmodel = GetIt.I<AppViewmodel>();
 
-  @override
-  Future onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    handler.next(options..queryParameters['lang'] = appViewmodel.language.code);
-  }
+// @override
+// Future onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+//   handler.next(options..queryParameters['lang'] = appViewmodel.language.code);
+// }
 }
