@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/base/utils/ext/build_context_ext.dart';
 import 'package:weather_app/features/search/data/models/product_model.dart';
@@ -36,6 +35,29 @@ class ProductCard extends StatelessWidget {
                       maxLines: 3,
                     ),
                   ),
+                  SizedBox(height: 15),
+                  if (model.searchPrices != null && model.searchPrices!.minPriceAed != null)
+                    Row(
+                      children: [
+                        Text(
+                          "AED  ",
+                          style: TextStyle(color: context.colors.outline, fontSize: 12),
+                        ),
+
+                        Text(
+                          model.searchPrices!.minPriceAed!.toString(),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '/' + model.unit!,
+                          style: TextStyle(color: context.colors.outline, fontSize: 12),
+                        ),
+                      ],
+                    ),
                 ],
               ),
             ),

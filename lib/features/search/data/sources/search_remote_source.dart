@@ -8,6 +8,7 @@ import 'package:weather_app/features/search/data/models/search_response_model.da
 abstract class SearchRemoteSource {
   Future<Result<SearchResponseModel>> search({
     required String keyword,
+    required String sort,
     required Map<String, dynamic> filters,
   });
 }
@@ -22,15 +23,17 @@ class SearchRemoteSourceImpl extends BaseRemoteSource implements SearchRemoteSou
   @override
   Future<Result<SearchResponseModel>> search({
     required String keyword,
+    required String sort,
     required Map<String, dynamic> filters,
   }) =>
       request(
           method: HttpMethod.POST,
           endpoint: EndPoints.search,
-          serializer: (json) => SearchResponseModel.fromJson(json['data']),
+          serializer: (json) => SearchResponseModel.fromJson(json['data'], json['totalRecords']),
           contentType: HttpContent.Json,
           data: {
             "userCurrency": "aed",
+            "sort": sort,
             "filter": {
               "attributes": filters,
               "lang": "en",

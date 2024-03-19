@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:rx_viewmodels/viewmodel.dart';
 import 'package:weather_app/base/presentation/viewmodels/base_viewmodel.dart';
 import 'package:weather_app/features/search/data/models/search_response_model.dart';
+import 'package:weather_app/features/search/domain/enums/sort_enum.dart';
 import 'package:weather_app/features/search/domain/repository/search_repository.dart';
 
 @injectable
@@ -21,13 +22,26 @@ class SearchViewmodel extends BaseViewmodel {
   Map<String, dynamic> filters = {};
   Rxn<SearchResponseModel> currentResponse = Rxn();
 
+  Rx<SortEnum> selectedSort = SortEnum.bestMatch.obs;
+
+  void changeSort(SortEnum sort) {
+    selectedSort(sort);
+    fetchProducts();
+  }
+
   void addFilter({required String key, required String value}) {
     filters[key] = value;
     fetchProducts();
   }
 
   void fetchProducts() => futureProducts(
-        searchRepository.search(keyword: textController.text, filters: filters).then((value) {
+        searchRepository
+            .search(
+          keyword: textController.text,
+          filters: filters,
+          sort: selectedSort.value.param,
+        )
+            .then((value) {
           term(textController.text);
           currentResponse(value.requireData());
           return value;

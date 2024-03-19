@@ -13,7 +13,8 @@ class SearchRepositoryImpl implements SearchRepository {
   @override
   Future<Result<SearchResponseModel>> search({
     required String keyword,
+    required String sort,
     required Map<String, dynamic> filters,
   }) =>
-      _searchRemoteSource.search(keyword: keyword, filters: filters);
+      _searchRemoteSource.search(keyword: keyword, filters: filters, sort: sort);
 }

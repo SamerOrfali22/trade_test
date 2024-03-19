@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:weather_app/features/search/data/models/filter_model.dart';
 import 'package:weather_app/features/search/data/models/product_model.dart';
 
@@ -9,20 +7,19 @@ class SearchResponseModel {
   final List<FilterModel>? filters;
   final SelectedFilters? selectedFilters;
   final String? selectedSorting;
+  final int totalRecords;
 
   SearchResponseModel({
     this.sort,
     required this.products,
+    required this.totalRecords,
     this.filters,
     this.selectedFilters,
     this.selectedSorting,
   });
 
-  factory SearchResponseModel.fromRawJson(String str) => SearchResponseModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  factory SearchResponseModel.fromJson(Map<String, dynamic> json) => SearchResponseModel(
+  factory SearchResponseModel.fromJson(Map<String, dynamic> json, int totalRecords) => SearchResponseModel(
+        totalRecords: totalRecords,
         sort: json["sort"] == null ? null : List<String>.from(json["sort"].map((x) => x)),
         products: json["products"] == null
             ? []
