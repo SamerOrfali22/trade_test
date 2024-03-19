@@ -35,6 +35,7 @@ class FiltersSection extends StatelessWidget {
                             onTap: () {
                               showBottomSheet(
                                 context: context,
+                                enableDrag: true,
                                 builder: (context) => FiltersSheet(viewmodel: viewmodel),
                               );
                             },

@@ -16,7 +16,7 @@ class FiltersSheet extends StatelessWidget {
       height: context.height * .7,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Colors.black,width: 2),
+        border: Border.all(color: Colors.black, width: 2),
         borderRadius: BorderRadius.circular(8),
       ),
       child: SingleChildScrollView(
@@ -41,7 +41,7 @@ class FiltersSheet extends StatelessWidget {
             SizedBox(height: 5),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: viewmodel.currentResponse.value!.filters!.map((e) => FilterWidget(model: e)).toList(),
+              children: viewmodel.currentResponse.value?.filters?.map((e) => FilterWidget(model: e)).toList() ?? [],
             )
           ],
         ),

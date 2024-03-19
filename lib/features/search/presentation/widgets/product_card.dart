@@ -48,7 +48,7 @@ class ProductCard extends StatelessWidget {
                           model.searchPrices!.minPriceAed!.toString(),
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 16,
+                            fontSize: 13,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
