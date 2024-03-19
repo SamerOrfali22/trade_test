@@ -4,14 +4,13 @@ A simple Weather App using Clean architecture
 
 steps to run the app:
 
-- fork the repository 'git clone https://github.com/SamerOrfali22/weather_app'
+- fork the repository 'git clone https://github.com/SamerOrfali22/trade_test'
 - run flutter pub get
-- run code generator : flutter packages pub run build_runner build --delete-conflicting-outputs
 - flutter run
 
 Technologies Used
 
-* API : openweathermap.org
+* API : tradeling api
 * State Management : GetX
 * http Services : dio
 * Dependency Injection : GetIt
@@ -23,15 +22,6 @@ Technologies Used
 * Local storage : Using the Stock library, it is easier to implement the SOT principle, even if
   offline support is not needed. This approach can improve the user experience and make it easier to
   migrate to offline support in the future.
-
-Features:
-
-- current location weather
-- search for city weather
-- check today forecast
-- check next days forecast
-- ability to change the language
-- ability to change the theme
 
 Clean Architecture Structure Base structure shipped with strict custom lint, base classes , utils
 and devops tools will bring consistency and best performance guarantee. Taking in consideration
