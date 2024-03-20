@@ -1,6 +1,4 @@
-# weather_app
-
-A simple Weather App using Clean architecture
+A simple App using Clean architecture
 
 steps to run the app:
 
